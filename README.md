@@ -1,4 +1,4 @@
-<h1 align="center">Hi, I'm Tanay</h1>
+<h1 align="center">Hello, I'm Tanay!</h1>
 <h3 align="center">BRB, I'm learning!</h3>
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=tanaypratapsingh&label=Profile%20views&color=0e75b6&style=flat" alt="tanaypratapsingh" /> </p>
