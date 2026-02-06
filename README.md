@@ -11,11 +11,10 @@
 
 ### About Me
 
-I'm a graduate student pursuing Applied Data Science at the Syracuse University (Class of 2026), with a Bachelor's of Technology in Computer Science & Engineering.
+Graduate student pursuing Applied Data Science at the Syracuse University (Class of 2026), with a Bachelor's of Technology in Computer Science & Engineering.
 
-I work across data science, machine learning, deep learning, artificial intelligence and analytics, building end-to-end systems from data cleaning through model deployment.
+Working across data science, machine learning, deep learning, artificial intelligence and analytics and building end-to-end systems to serve real issues.
 
-Previously worked as a **Data & Product Analyst Intern at ProProfs**, where I built customer analytics reports, product feature comparisons, and dashboards that drove measurable product improvements.
 ---
 
 ### Tech Stack
