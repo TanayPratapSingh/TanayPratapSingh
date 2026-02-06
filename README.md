@@ -39,5 +39,3 @@ MySQL, BigQuery, Hadoop, Apache, ETL Pipelines, Star Schema & Dimensional Modeli
 -  Data Science Researcher @ NEXIS Student Technology Lab
 -  Graduate Teaching Assistant (Cybersecurity) @ iSchool, Syracuse
 -  Actively seeking **Data Science / ML / Analytics internships** for Summer 2026
-
---
