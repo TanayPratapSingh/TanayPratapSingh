@@ -16,25 +16,6 @@ I'm a graduate student pursuing Applied Data Science at the Syracuse University 
 I work across data science, machine learning, deep learning, artificial intelligence and analytics, building end-to-end systems from data cleaning through model deployment.
 
 Previously worked as a **Data & Product Analyst Intern at ProProfs**, where I built customer analytics reports, product feature comparisons, and dashboards that drove measurable product improvements.
-
----
-
-### Featured Projects
-
-| Project | Description | Tech Stack |
-|---------|-------------|------------|
-| [**The Perfect Lap**](#) | Predicting optimal F1 pit stop timing using 20 years of race data. Random Forest model achieved MAE of 2.78 laps and R² of 0.87. Deployed as a Streamlit web app. | Python, Scikit-learn, CatBoost, SHAP, Streamlit, Pandas |
-| [**Kp Index Prediction**](#) | Multi-horizon geomagnetic storm forecasting (1h/3h/6h/12h ahead) using LSTM neural networks on NASA OMNI2 data. 1-hour RMSE of 0.738, 45% improvement over baseline. | Python, TensorFlow/Keras, NumPy, NASA OMNI2 |
-| [**Energy Demand Forecasting**](#) | Forecasting hourly residential electricity demand across 5,000+ homes using 6.5M+ rows of data. Random Forest R² = 0.85. Simulated climate impact scenarios. | R, Random Forest, XGBoost, Shiny, ggplot2 |
-| [**Development Myths**](#) | Data-driven analysis challenging "Wealth = Health" across 150+ countries using statistical analysis and log-scale visualizations. | Python, Pandas, Matplotlib, Seaborn |
-| [**Travel Itinerary System**](#) | SQL backend with 12+ entity ERD, auto-generating complete travel itineraries via stored procedures with budget enforcement and seasonal validation. | SQL, Stored Procedures, Triggers, ERD Design |
-| [**Uber Data Engineering**](#) | End-to-end data pipeline: star schema modeling, GCP deployment, BigQuery analytics, and Power BI dashboarding on NYC taxi data. | Python, GCP, BigQuery, Power BI, Lucid |
-| [**Digit Recognizer NN**](#) | Neural network for handwritten digit recognition built entirely from scratch — forward prop, backprop, and gradient descent using only NumPy. No frameworks. | Python, NumPy, Pandas |
-| [**Real-Time Big Data Research**](#) | Undergraduate research on IoT data latency. Proposed the "Big Sandwich" layered architecture combining edge, fog, crowd, and cloud computing. | Research, Edge/Fog/Cloud Computing |
-| [**Portfolio Website**](#) | Responsive personal portfolio built from scratch with vanilla HTML5, CSS3, and JavaScript. Deployed on Netlify with CI/CD. | HTML5, CSS3, JavaScript, Git, Netlify |
-
-> **Note:** Replace the `#` links above with actual repo URLs as you create/update each repository.
-
 ---
 
 ### Tech Stack
