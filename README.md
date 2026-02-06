@@ -2,9 +2,9 @@
 <h3 align="center">Data Scientist · ML Engineer · Graduate Student at Syracuse University</h3>
 
 <p align="center">
-    <a href="https://tanaypratapsingh.lovable.app"></a>
-  <a href="/cdn-cgi/l/email-protection#76021718170f064741404f36111b171f1a5815191b"></a>
-  <a href="https://linkedin.com/in/tanay-pratap-singh"></a>
+    <a href="mailto:tanayp1769@gmail.com">tanayp1769@gmail.com</a> · 
+  <a href="https://linkedin.com/in/tanay-pratap-singh">LinkedIn</a> · 
+  <a href="https://tanaypratapsingh.lovable.app">Portfolio</a>
 </p>
 
 ---
