@@ -2,9 +2,9 @@
 <h3 align="center">Data Scientist · ML Engineer · Graduate Student at Syracuse University</h3>
 
 <p align="center">
-    <a href="https://tanaypratapsingh.lovable.app"><img src="https://img.shields.io/badge/Portfolio-tanaypratapsingh.lovable.app-FF6B6B?style=flat&logo=googlechrome&logoColor=white"/></a>
-  <a href="/cdn-cgi/l/email-protection#76021718170f064741404f36111b171f1a5815191b"><img src="https://img.shields.io/badge/Email-tanayp1769%40gmail.com-D14836?style=flat&logo=gmail&logoColor=white"/></a>
-  <a href="https://linkedin.com/in/tanay-pratap-singh"><img src="https://img.shields.io/badge/LinkedIn-Tanay%20Pratap%20Singh-0077B5?style=flat&logo=linkedin&logoColor=white"/></a>
+    <a href="https://tanaypratapsingh.lovable.app"></a>
+  <a href="/cdn-cgi/l/email-protection#76021718170f064741404f36111b171f1a5815191b"></a>
+  <a href="https://linkedin.com/in/tanay-pratap-singh"></a>
 </p>
 
 ---
