@@ -2,8 +2,8 @@
 <h3 align="center">Data Science · Machine Learning · Graduate Student at Syracuse University</h3>
 
 <p align="center">
-    <a href="https://tanaypratapsingh.lovable.app">Portfolio</a> ·
-    <a href="mailto:tanayp1769@gmail.com">tanayp1769@gmail.com</a> · 
+    <a href="https://tanaypratapsingh.github.io">Portfolio</a> ·
+    <a href="mailto:tanayyps@gmail.com">tanayyps@gmail.com</a> · 
   <a href="https://linkedin.com/in/tanay-pratap-singh">LinkedIn</a>
 </p>
 
