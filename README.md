@@ -4,7 +4,7 @@
 <p align="center">
     <a href="https://tanaypratapsingh.github.io">Portfolio</a> ·
     <a href="mailto:tanayyps@gmail.com">tanayyps@gmail.com</a> · 
-  <a href="https://linkedin.com/in/tanay-pratap-singh">LinkedIn</a>
+  <a href="www.linkedin.com/in/tanay-pratap-singh-8360681b0">LinkedIn</a>
 </p>
 
 ---
