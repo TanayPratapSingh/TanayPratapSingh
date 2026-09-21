@@ -76,5 +76,11 @@
     "result": "End to end GCP pipeline into a BigQuery star schema",
     "stack": "GCP · BigQuery · SQL · dimensional modeling",
     "repo": ""
+  },
+  {
+    "name": "Digit Recognition from Scratch",
+    "result": "94% MNIST accuracy with no frameworks",
+    "stack": "NumPy · backpropagation",
+    "repo": ""
   }
 ]
