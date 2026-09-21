@@ -4,5 +4,11 @@
     "result": "27,378 real ZTF alerts scored; dbt 8 models, 21 tests, 32 checks green",
     "stack": "Kafka · Avro · TensorFlow · dbt · DuckDB · Airflow",
     "repo": "https://github.com/TanayPratapSingh/ztf-transient-pipeline"
+  },
+  {
+    "name": "Groundwork",
+    "result": "recall@5 0.921 · ECE 0.045 · injection recall 0.884 unseen · 113 tests",
+    "stack": "RAG · BM25 · LLM gateway · guardrails · calibration",
+    "repo": "https://github.com/TanayPratapSingh/Groundwork"
   }
 ]
