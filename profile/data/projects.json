@@ -22,5 +22,11 @@
     "result": "stateful graph · 9 of 24 flagged, 7 corrected through the review gate",
     "stack": "Python stdlib · state graph · tool calling · audit trail",
     "repo": "https://github.com/TanayPratapSingh/comms-agent"
+  },
+  {
+    "name": "ShopFloor AI",
+    "result": "0.85 F1 · 0.96 AUC across 5 failure modes · 7 service deployed stack",
+    "stack": "scikit-learn · MLflow · Kafka · ChromaDB · Docker",
+    "repo": "https://github.com/TanayPratapSingh/shopfloor-ai"
   }
 ]
