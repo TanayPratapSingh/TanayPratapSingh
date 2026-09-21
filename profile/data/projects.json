@@ -46,5 +46,11 @@
     "result": "+25.4% peak load at +5°C · 9.2% savings modeled",
     "stack": "R · regression · scenario modeling · Shiny",
     "repo": "https://github.com/TanayPratapSingh/energy-usage-prediction"
+  },
+  {
+    "name": "JMA Wireless DMAIC Dashboard",
+    "result": "~$355K/yr recovered · 31 GB JSON reduced to a 5 MB pipeline",
+    "stack": "DMAIC · pandas · openpyxl · Power BI",
+    "repo": ""
   }
 ]
