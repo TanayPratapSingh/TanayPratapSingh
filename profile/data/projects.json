@@ -82,5 +82,11 @@
     "result": "94% MNIST accuracy with no frameworks",
     "stack": "NumPy · backpropagation",
     "repo": ""
+  },
+  {
+    "name": "Real Time Big Data Inflow",
+    "result": "40 to 60% latency reduction across a 6 dimension comparison",
+    "stack": "IoT · edge · fog · stream architecture",
+    "repo": ""
   }
 ]
