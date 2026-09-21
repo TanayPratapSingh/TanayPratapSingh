@@ -34,5 +34,11 @@
     "result": "2.78 lap MAE over 250K+ historical records",
     "stack": "Random Forest · CatBoost · SHAP · Streamlit",
     "repo": "https://github.com/TanayPratapSingh/the-perfect-lap"
+  },
+  {
+    "name": "Multi Horizon Kp Index Prediction",
+    "result": "45% better than baseline over 96K+ hourly observations",
+    "stack": "LSTM · RNN · TensorFlow · time series",
+    "repo": "https://github.com/TanayPratapSingh/multi-horizon-aurora-kp-prediction"
   }
 ]
