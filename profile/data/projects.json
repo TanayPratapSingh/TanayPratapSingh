@@ -1,0 +1,8 @@
+[
+  {
+    "name": "ZTF Transient Pipeline",
+    "result": "27,378 real ZTF alerts scored; dbt 8 models, 21 tests, 32 checks green",
+    "stack": "Kafka · Avro · TensorFlow · dbt · DuckDB · Airflow",
+    "repo": "https://github.com/TanayPratapSingh/ztf-transient-pipeline"
+  }
+]
