@@ -64,5 +64,11 @@
     "result": "ANOVA F = 426.5 (p < 2e-16) across 180+ countries",
     "stack": "R · ANOVA · data storytelling",
     "repo": ""
+  },
+  {
+    "name": "Travel Itinerary Management System",
+    "result": "12 entity normalized schema · full itinerary in one call",
+    "stack": "MySQL · stored procedures · triggers · ERD",
+    "repo": ""
   }
 ]
