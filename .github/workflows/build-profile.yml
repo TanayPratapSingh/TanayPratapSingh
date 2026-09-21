@@ -1,0 +1,31 @@
+name: Rebuild profile README
+
+on:
+  push:
+    paths:
+      - 'profile/**'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build README
+        run: python3 profile/build_profile.py
+      - name: Commit if changed
+        run: |
+          if [ -n "$(git status --porcelain README.md)" ]; then
+            git config user.name  "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add README.md
+            git commit -m "Rebuild profile README from profile/ sources"
+            git push
+          else
+            echo "README already up to date"
+          fi
