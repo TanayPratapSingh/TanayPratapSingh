@@ -16,5 +16,11 @@
     "result": "topic acc 0.88 to 0.96 with human review · sentiment 0.50 to 0.85",
     "stack": "scikit-learn · VADER · Streamlit · human in the loop",
     "repo": "https://github.com/TanayPratapSingh/media-pulse"
+  },
+  {
+    "name": "comms-agent",
+    "result": "stateful graph · 9 of 24 flagged, 7 corrected through the review gate",
+    "stack": "Python stdlib · state graph · tool calling · audit trail",
+    "repo": "https://github.com/TanayPratapSingh/comms-agent"
   }
 ]
