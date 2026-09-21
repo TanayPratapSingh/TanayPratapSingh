@@ -58,5 +58,11 @@
     "result": "4 verified statistical traps for frontier model evaluation",
     "stack": "AI evaluation · analytics red teaming",
     "repo": ""
+  },
+  {
+    "name": "Wealth, Health, and Education",
+    "result": "ANOVA F = 426.5 (p < 2e-16) across 180+ countries",
+    "stack": "R · ANOVA · data storytelling",
+    "repo": ""
   }
 ]
