@@ -28,5 +28,11 @@
     "result": "0.85 F1 · 0.96 AUC across 5 failure modes · 7 service deployed stack",
     "stack": "scikit-learn · MLflow · Kafka · ChromaDB · Docker",
     "repo": "https://github.com/TanayPratapSingh/shopfloor-ai"
+  },
+  {
+    "name": "The Perfect Lap",
+    "result": "2.78 lap MAE over 250K+ historical records",
+    "stack": "Random Forest · CatBoost · SHAP · Streamlit",
+    "repo": "https://github.com/TanayPratapSingh/the-perfect-lap"
   }
 ]
