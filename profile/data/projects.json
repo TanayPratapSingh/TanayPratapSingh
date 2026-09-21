@@ -52,5 +52,11 @@
     "result": "~$355K/yr recovered · 31 GB JSON reduced to a 5 MB pipeline",
     "stack": "DMAIC · pandas · openpyxl · Power BI",
     "repo": ""
+  },
+  {
+    "name": "Project Mark",
+    "result": "4 verified statistical traps for frontier model evaluation",
+    "stack": "AI evaluation · analytics red teaming",
+    "repo": ""
   }
 ]
