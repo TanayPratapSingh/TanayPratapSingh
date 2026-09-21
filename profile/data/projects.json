@@ -40,5 +40,11 @@
     "result": "45% better than baseline over 96K+ hourly observations",
     "stack": "LSTM · RNN · TensorFlow · time series",
     "repo": "https://github.com/TanayPratapSingh/multi-horizon-aurora-kp-prediction"
+  },
+  {
+    "name": "July Energy Demand Under Warming",
+    "result": "+25.4% peak load at +5°C · 9.2% savings modeled",
+    "stack": "R · regression · scenario modeling · Shiny",
+    "repo": "https://github.com/TanayPratapSingh/energy-usage-prediction"
   }
 ]
