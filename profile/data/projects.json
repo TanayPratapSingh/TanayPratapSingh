@@ -70,5 +70,11 @@
     "result": "12 entity normalized schema · full itinerary in one call",
     "stack": "MySQL · stored procedures · triggers · ERD",
     "repo": ""
+  },
+  {
+    "name": "Uber Data Engineering Pipeline",
+    "result": "End to end GCP pipeline into a BigQuery star schema",
+    "stack": "GCP · BigQuery · SQL · dimensional modeling",
+    "repo": ""
   }
 ]
