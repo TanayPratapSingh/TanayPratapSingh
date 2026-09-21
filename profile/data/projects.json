@@ -10,5 +10,11 @@
     "result": "recall@5 0.921 · ECE 0.045 · injection recall 0.884 unseen · 113 tests",
     "stack": "RAG · BM25 · LLM gateway · guardrails · calibration",
     "repo": "https://github.com/TanayPratapSingh/Groundwork"
+  },
+  {
+    "name": "media-pulse",
+    "result": "topic acc 0.88 to 0.96 with human review · sentiment 0.50 to 0.85",
+    "stack": "scikit-learn · VADER · Streamlit · human in the loop",
+    "repo": "https://github.com/TanayPratapSingh/media-pulse"
   }
 ]
