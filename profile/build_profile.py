@@ -1,8 +1,8 @@
 """Assemble README.md for the GitHub profile from profile/.
 
-Sections are plain markdown files concatenated in filename order. The selected
-work table is generated from profile/data/projects.json so a project is
-described in exactly one place.
+Sections are plain markdown files concatenated in filename order. The project
+table and the earlier list are generated from profile/data/projects.json so a
+project is described in exactly one place.
 """
 import io, json, pathlib
 
@@ -18,21 +18,28 @@ def sections(folder):
         return []
     return [read(p) for p in sorted(d.iterdir()) if p.suffix == ".md"]
 
-def work_table():
+def projects(group):
     f = ROOT / "data" / "projects.json"
-    if not f.exists():
-        return ""
-    rows = json.loads(read(f))
-    out = ["| Project | Result | Stack | Code |", "|---|---|---|---|"]
-    for r in rows:
-        code = "[repo](%s)" % r["repo"] if r.get("repo") else "—"
-        out.append("| %s | %s | %s | %s |" % (r["name"], r["result"], r["stack"], code))
+    rows = json.loads(read(f)) if f.exists() else []
+    return [r for r in rows if r.get("group") == group]
+
+def name(r):
+    # link the name when the code is public; otherwise plain text
+    return "[%s](%s)" % (r["name"], r["repo"]) if r.get("repo") else r["name"]
+
+def work_table():
+    out = ["| Project | What it does and what it found | Stack |", "|---|---|---|"]
+    for r in projects("recent"):
+        out.append("| %s | %s | %s |" % (name(r), r["result"], r.get("stack", "")))
     return "\n".join(out)
 
+def earlier_list():
+    return "\n".join("- **%s**, %s. %s" % (name(r), r["when"], r["result"]) for r in projects("earlier"))
+
 def build():
-    body = sections("sections")
-    text = "\n\n".join(body)
+    text = "\n\n".join(sections("sections"))
     text = text.replace("<!--WORK-->", work_table())
+    text = text.replace("<!--EARLIER-->", earlier_list())
     text = text.replace("<!--STACK-->", "\n\n".join(sections("stack")))
     io.open(OUT, "w", encoding="utf-8").write(text.rstrip() + "\n")
     return len(text)
