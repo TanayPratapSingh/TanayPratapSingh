@@ -1,9 +1,9 @@
-## Currently
+## Now
 
-- **MS Applied Data Science**, Syracuse University, graduating December 2026
-- **Research Assistant, Gravity Spy 2.0** — NSF funded citizen science supporting
-  LIGO. Causal inference on detector noise across 276,000+ volunteer
-  classifications, 25,104 glitch subjects, and 8,293 auxiliary detector channels.
-  Two input MobileNetV2 at 0.89 validation AUC, calibration error brought from
-  0.10 down to 0.05.
-- Open to **data, ML, AI, and analytics roles**
+- Finishing an MS in Applied Data Science at Syracuse University, December 2026.
+- Research assistant on Gravity Spy 2.0, an NSF funded citizen science project
+  that supports LIGO, since February 2026. I built the pipeline that parses
+  276,000+ volunteer classifications across 25,104 glitch subjects and 8,293
+  auxiliary channels, and trained a two input CNN on a shared MobileNetV2
+  backbone: 0.89 validation AUC, with calibration error cut from 0.10 to 0.05.
+- Open to AI, data, ML, and analytics roles.
