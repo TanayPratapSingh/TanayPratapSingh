@@ -1,2 +1,4 @@
-**MLOps and serving**  
-MLflow · Apache Airflow · Docker · Docker Compose · Kubernetes · GitHub Actions · model registry · FastAPI · Streamlit
+**Serving and ops:** Docker, MLflow, FastAPI, GitHub Actions, Streamlit, Shiny
+
+Coursework also covered Spark, Hive, HDFS, ksqlDB, MapReduce, Neo4j, Redis, and
+Cassandra.
