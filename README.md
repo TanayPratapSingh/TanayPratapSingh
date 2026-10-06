@@ -1,77 +1,68 @@
 # Tanay Pratap Singh
 
-Graduate data science student at Syracuse University. I build retrieval,
-evaluation, and streaming data systems, then measure what they actually do.
+I build agent and retrieval systems and the data pipelines under them, then
+measure where they break.
 
-[Portfolio](https://tanaypratapsingh.github.io) ·
-[tanayyps@gmail.com](mailto:tanayyps@gmail.com) ·
-[LinkedIn](https://www.linkedin.com/in/tanay-pratap-singh-8360681b0/)
+Syracuse, NY · [Portfolio](https://tanaypratapsingh.github.io) ·
+[LinkedIn](https://www.linkedin.com/in/tanay-pratap-singh-8360681b0/) ·
+[tanayyps@gmail.com](mailto:tanayyps@gmail.com)
 
-## Currently
+## Now
 
-- **MS Applied Data Science**, Syracuse University, graduating December 2026
-- **Research Assistant, Gravity Spy 2.0** : NSF funded citizen science supporting
-  LIGO. Causal inference on detector noise across 276,000+ volunteer
-  classifications, 25,104 glitch subjects, and 8,293 auxiliary detector channels.
-  Two input MobileNetV2 at 0.89 validation AUC, calibration error brought from
-  0.10 down to 0.05.
-- Open to **data, ML, AI, and analytics roles**
+- Finishing an MS in Applied Data Science at Syracuse University, December 2026.
+- Research assistant on Gravity Spy 2.0, an NSF funded citizen science project
+  that supports LIGO, since February 2026. I built the pipeline that parses
+  276,000+ volunteer classifications across 25,104 glitch subjects and 8,293
+  auxiliary channels, and trained a two input CNN on a shared MobileNetV2
+  backbone: 0.89 validation AUC, with calibration error cut from 0.10 to 0.05.
+- Open to AI, data, ML, and analytics roles.
 
-## Selected work
+## Projects, 2026
 
-| Project | Result | Stack | Code |
-|---|---|---|---|
-| ZTF Transient Pipeline | 27,378 real ZTF alerts scored; dbt 8 models, 21 tests, 32 checks green | Kafka · Avro · TensorFlow · dbt · DuckDB · Airflow | [repo](https://github.com/TanayPratapSingh/ztf-transient-pipeline) |
-| Groundwork | recall@5 0.921 · ECE 0.045 · injection recall 0.884 unseen · 113 tests | RAG · BM25 · LLM gateway · guardrails · calibration | [repo](https://github.com/TanayPratapSingh/Groundwork) |
-| media-pulse | topic acc 0.88 to 0.96 with human review · sentiment 0.50 to 0.85 | scikit-learn · VADER · Streamlit · human in the loop | [repo](https://github.com/TanayPratapSingh/media-pulse) |
-| comms-agent | stateful graph · 9 of 24 flagged, 7 corrected through the review gate | Python stdlib · state graph · tool calling · audit trail | [repo](https://github.com/TanayPratapSingh/comms-agent) |
-| ShopFloor AI | 0.85 F1 · 0.96 AUC across 5 failure modes · 7 service deployed stack | scikit-learn · MLflow · Kafka · ChromaDB · Docker | [repo](https://github.com/TanayPratapSingh/shopfloor-ai) |
-| The Perfect Lap | 2.78 lap MAE over 250K+ historical records | Random Forest · CatBoost · SHAP · Streamlit | [repo](https://github.com/TanayPratapSingh/the-perfect-lap) |
-| Multi Horizon Kp Index Prediction | 45% better than baseline over 96K+ hourly observations | LSTM · RNN · TensorFlow · time series | [repo](https://github.com/TanayPratapSingh/multi-horizon-aurora-kp-prediction) |
-| July Energy Demand Under Warming | +25.4% peak load at +5°C · 9.2% savings modeled | R · regression · scenario modeling · Shiny | [repo](https://github.com/TanayPratapSingh/energy-usage-prediction) |
-| JMA Wireless DMAIC Dashboard | ~$355K/yr recovered · 31 GB JSON reduced to a 5 MB pipeline | DMAIC · pandas · openpyxl · Power BI | — |
-| Project Mark | 4 verified statistical traps for frontier model evaluation | AI evaluation · analytics red teaming | — |
-| Wealth, Health, and Education | ANOVA F = 426.5 (p < 2e-16) across 180+ countries | R · ANOVA · data storytelling | — |
-| Travel Itinerary Management System | 12 entity normalized schema · full itinerary in one call | MySQL · stored procedures · triggers · ERD | — |
-| Uber Data Engineering Pipeline | End to end GCP pipeline into a BigQuery star schema | GCP · BigQuery · SQL · dimensional modeling | — |
-| Digit Recognition from Scratch | 94% MNIST accuracy with no frameworks | NumPy · backpropagation | — |
-| Real Time Big Data Inflow | 40 to 60% latency reduction across a 6 dimension comparison | IoT · edge · fog · stream architecture | — |
+| Project | What it does and what it found | Stack |
+|---|---|---|
+| [Replicating Dr. GRPO](https://github.com/TanayPratapSingh/drgrpo-replication) | RL post training on Qwen2.5-1.5B, GRPO against Dr. GRPO on the paper's own setup. The accuracy claim held (51.6% vs 51.2% on MATH500). Both length claims came out reversed. One seed, 100 LoRA steps. | PyTorch, vLLM, LoRA, MLX |
+| [Tool Dependency Graph](https://github.com/TanayPratapSingh/tool-dependency-graph) | Works out which agent tools have to run before which, from nothing but their JSON Schemas. 1,391 tools, 46 typed entities, 3,278 edges, 8 of 8 hand written assertions passing. | TypeScript, Bun, JSON Schema |
+| [Distributed ViT on CIFAR-10](https://github.com/TanayPratapSingh/distributed-vit-cifar10) | Data parallel training on 2x T4, with gradient equivalence tested before any speed was measured. Scaling efficiency was 98% in fp32 and 57% in fp16; 24 measured runs traced the drop to the host's 4 vCPUs. | PyTorch, DDP, FSDP |
+| [ZTF Transient Pipeline](https://github.com/TanayPratapSingh/ztf-transient-pipeline) | Replays a real night of ZTF alerts (27,378 Avro packets) through Kafka. 500 were loaded, scored by a multimodal CNN, and rebuilt in a dbt warehouse with 8 models and 21 tests. Coarse labels; a systems project first. | Kafka, Avro, TensorFlow, dbt, DuckDB, Airflow |
+| [Groundwork](https://github.com/TanayPratapSingh/Groundwork) | RAG evaluation, guardrails, and an LLM gateway on SQuAD v2.0. recall@5 0.921, ECE 0.045, prompt injection recall 0.884 on an unseen attack corpus, 113 tests. | Python, BM25, FastAPI, Docker |
+| [Replicating BEIR](https://github.com/TanayPratapSingh/beir-replication) | Six published retrieval results reproduced, four exact to three decimals. The one that missed came from a silent 100 token truncation default in the DPR encoder. | BM25, sentence-transformers, pytrec_eval |
+| JMA Wireless | Led a four person Lean Six Sigma team at a maker of cell tower and 5G equipment. Flattened 31 GB of nested PLC JSON to under 5 MB for Power BI. About $355K a year in projected opportunity, pending JMA Finance confirmation. | pandas, Power BI, DMAIC |
+| [ShopFloor AI](https://github.com/TanayPratapSingh/shopfloor-ai) | Predictive maintenance on the AI4I 2020 dataset (0.85 F1, 0.96 AUC), Kafka KPI streaming, and RAG over 6 bundled SOPs, run as a seven service Docker Compose stack. | scikit-learn, MLflow, Kafka, ChromaDB |
+| [handoff](https://github.com/TanayPratapSingh/handoff) | Supervisor orchestration where every escalation has a deadline and a declared outcome when nobody answers: ladder, safer substitute, drop, or freeze. 212 tests, no dependencies, simulated cluster, no LLM calls. | Python |
+| [comms-agent](https://github.com/TanayPratapSingh/comms-agent) | A stateful agent with a human review gate inside its control flow. On the sample run it flags 9 of 24 mentions and the reviewer corrects 7. Synthetic corpus, mock model, simulated reviewer. | Python, state graph, tool calling |
+| Project Mark | Four families of analytics traps with deterministic golden solutions, built to stress test frontier models. The models solved the clean versions. | Python, pandas, statistics |
+| [media-pulse](https://github.com/TanayPratapSingh/media-pulse) | Media monitoring with confidence gated human review. Review lifts topic accuracy from 0.88 to 0.96 and sentiment from 0.50 to 0.85; ECE 0.156. Synthetic corpus about a fictional brand. | scikit-learn, VADER, Streamlit |
+| [Kp Index Forecasting](https://github.com/TanayPratapSingh/multi-horizon-aurora-kp-prediction) | LSTM forecasts of the geomagnetic Kp index from solar wind data. At 1 hour, RMSE 0.738, 45% better than a mean baseline, over 96,000+ hourly observations. | TensorFlow, LSTM |
 
-Full write ups, including what each system gets wrong, are on the
+Full write ups, including what each one gets wrong, are on the
 [portfolio](https://tanaypratapsingh.github.io).
 
-## Stack
+## Earlier
 
-**Languages**  
-Python · SQL · R · C++ · Java · JavaScript
+- **[The Perfect Lap](https://github.com/TanayPratapSingh/the-perfect-lap)**, 2025. Predicts the first pit stop lap in Formula 1. MAE 2.78 laps on 250,000+ records, with a Streamlit app.
+- **[July Energy Demand Under Warming](https://github.com/TanayPratapSingh/energy-usage-prediction)**, 2025. Models July residential demand: +25.4% peak hour load at +5°C, and 9.2% savings from a 1°C setpoint shift. Random Forest R² 0.48. R and Shiny.
+- **Wealth Equals Health?**, 2025. Gapminder data across 180+ countries: how far income explains life expectancy, and whether education does more than income to reduce child mortality. ANOVA F = 426.5.
+- **Travel Itinerary Management System**, 2025. A 12 entity normalized SQL schema where stored procedures and triggers enforce the business rules.
+- **Uber Data Engineering Pipeline**, 2024. A GCP pipeline into a BigQuery star schema.
+- **Digit Recognition from Scratch**, 2024. A neural network in NumPy with hand written backpropagation. 94% on MNIST.
+- **Real Time Big Data Inflow**, 2024. A literature review of 12+ primary sources comparing cloud and tiered edge architectures across six dimensions. For suitably partitioned workloads the comparison puts the latency reduction at 40 to 60%.
 
-**LLM and generative AI**  
-RAG · LangChain · ChromaDB · BM25 · agent orchestration · state graphs · tool calling · LLM gateway · guardrails · prompt injection defense · jailbreak detection · LLM evaluation · calibration (ECE) · human in the loop · PII redaction
+## Tools used in these projects
 
-**Machine learning and deep learning**  
-scikit-learn · XGBoost · CatBoost · TensorFlow · Keras · LSTM · RNN · CNN · multimodal CNN · MobileNetV2 · SHAP · feature engineering · calibration
+**Languages:** Python, SQL, R, TypeScript
 
-**Data engineering**  
-Apache Kafka · Avro · dbt · DuckDB · BigQuery · Spark · Hive · HDFS · ksqlDB · star schema · dimensional modeling · ETL pipelines
+**Retrieval and LLM systems:** BM25, sentence-transformers, ChromaDB, RAG
+evaluation, calibration (ECE), guardrails, prompt injection detection, agent
+orchestration, tool calling
 
-**MLOps and serving**  
-MLflow · Apache Airflow · Docker · Docker Compose · Kubernetes · GitHub Actions · model registry · FastAPI · Streamlit
+**Training and ML:** PyTorch, TensorFlow, Keras, scikit-learn, XGBoost,
+CatBoost, SHAP, LoRA, vLLM, MLX
 
-**Analytics**  
-Power BI · Tableau · DAX · hypothesis testing · A/B testing · cohort and funnel analysis · time series forecasting · anomaly detection · Lean Six Sigma DMAIC
+**Data and analytics:** pandas, Kafka, Avro, dbt, DuckDB, BigQuery, Airflow,
+Power BI, Tableau
 
-## How I work
+**Serving and ops:** Docker, MLflow, FastAPI, GitHub Actions, Streamlit, Shiny
 
-- **Every number traces to a command and an artifact.** If a figure came from a
-  fixture or a stub adapter rather than a real run, it says so in the same
-  sentence as the figure.
-- **Limitations get published, not omitted.** Groundwork ships with its release
-  gate failing abstention recall at 0.868 against a 0.900 floor. The ZTF README
-  states plainly that its class labels are coarse and it is not a publishable
-  classifier.
-- **A headline with no baseline is not a result.** Retrieval ablations sit next
-  to the number they are supposed to justify.
-
-## Contact
-
-**tanayyps@gmail.com** · tsingh13@syr.edu · Syracuse, NY
+Coursework also covered Spark, Hive, HDFS, ksqlDB, MapReduce, Neo4j, Redis, and
+Cassandra.
