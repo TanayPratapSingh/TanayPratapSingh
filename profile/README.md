@@ -7,7 +7,8 @@ file directly; it is generated.
 profile/
   sections/   page sections, concatenated in filename order
   stack/      one file per stack group, injected at <!--STACK-->
-  data/       projects.json, rendered into the table at <!--WORK-->
+  data/       projects.json: "recent" rows render as the table at <!--WORK-->,
+              "earlier" rows as the list at <!--EARLIER-->
 ```
 
 ## Rebuilding
