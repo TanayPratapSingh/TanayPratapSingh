@@ -1,6 +1,10 @@
-## Selected work
+## Projects, 2026
 
 <!--WORK-->
 
-Full write ups, including what each system gets wrong, are on the
+Full write ups, including what each one gets wrong, are on the
 [portfolio](https://tanaypratapsingh.github.io).
+
+## Earlier
+
+<!--EARLIER-->
