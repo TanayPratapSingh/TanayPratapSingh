@@ -1,2 +1,2 @@
-**Data engineering**  
-Apache Kafka · Avro · dbt · DuckDB · BigQuery · Spark · Hive · HDFS · ksqlDB · star schema · dimensional modeling · ETL pipelines
+**Data and analytics:** pandas, Kafka, Avro, dbt, DuckDB, BigQuery, Airflow,
+Power BI, Tableau
