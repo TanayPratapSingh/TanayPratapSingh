@@ -1,2 +1,1 @@
-**Languages**  
-Python · SQL · R · C++ · Java · JavaScript
+**Languages:** Python, SQL, R, TypeScript
