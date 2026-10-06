@@ -1,92 +1,142 @@
 [
   {
+    "group": "recent",
+    "name": "Replicating Dr. GRPO",
+    "repo": "https://github.com/TanayPratapSingh/drgrpo-replication",
+    "result": "RL post training on Qwen2.5-1.5B, GRPO against Dr. GRPO on the paper's own setup. The accuracy claim held (51.6% vs 51.2% on MATH500). Both length claims came out reversed. One seed, 100 LoRA steps.",
+    "stack": "PyTorch, vLLM, LoRA, MLX"
+  },
+  {
+    "group": "recent",
+    "name": "Tool Dependency Graph",
+    "repo": "https://github.com/TanayPratapSingh/tool-dependency-graph",
+    "result": "Works out which agent tools have to run before which, from nothing but their JSON Schemas. 1,391 tools, 46 typed entities, 3,278 edges, 8 of 8 hand written assertions passing.",
+    "stack": "TypeScript, Bun, JSON Schema"
+  },
+  {
+    "group": "recent",
+    "name": "Distributed ViT on CIFAR-10",
+    "repo": "https://github.com/TanayPratapSingh/distributed-vit-cifar10",
+    "result": "Data parallel training on 2x T4, with gradient equivalence tested before any speed was measured. Scaling efficiency was 98% in fp32 and 57% in fp16; 24 measured runs traced the drop to the host's 4 vCPUs.",
+    "stack": "PyTorch, DDP, FSDP"
+  },
+  {
+    "group": "recent",
     "name": "ZTF Transient Pipeline",
-    "result": "27,378 real ZTF alerts scored; dbt 8 models, 21 tests, 32 checks green",
-    "stack": "Kafka · Avro · TensorFlow · dbt · DuckDB · Airflow",
-    "repo": "https://github.com/TanayPratapSingh/ztf-transient-pipeline"
+    "repo": "https://github.com/TanayPratapSingh/ztf-transient-pipeline",
+    "result": "Replays a real night of ZTF alerts (27,378 Avro packets) through Kafka. 500 were loaded, scored by a multimodal CNN, and rebuilt in a dbt warehouse with 8 models and 21 tests. Coarse labels; a systems project first.",
+    "stack": "Kafka, Avro, TensorFlow, dbt, DuckDB, Airflow"
   },
   {
+    "group": "recent",
     "name": "Groundwork",
-    "result": "recall@5 0.921 · ECE 0.045 · injection recall 0.884 unseen · 113 tests",
-    "stack": "RAG · BM25 · LLM gateway · guardrails · calibration",
-    "repo": "https://github.com/TanayPratapSingh/Groundwork"
+    "repo": "https://github.com/TanayPratapSingh/Groundwork",
+    "result": "RAG evaluation, guardrails, and an LLM gateway on SQuAD v2.0. recall@5 0.921, ECE 0.045, prompt injection recall 0.884 on an unseen attack corpus, 113 tests.",
+    "stack": "Python, BM25, FastAPI, Docker"
   },
   {
-    "name": "media-pulse",
-    "result": "topic acc 0.88 to 0.96 with human review · sentiment 0.50 to 0.85",
-    "stack": "scikit-learn · VADER · Streamlit · human in the loop",
-    "repo": "https://github.com/TanayPratapSingh/media-pulse"
+    "group": "recent",
+    "name": "Replicating BEIR",
+    "repo": "https://github.com/TanayPratapSingh/beir-replication",
+    "result": "Six published retrieval results reproduced, four exact to three decimals. The one that missed came from a silent 100 token truncation default in the DPR encoder.",
+    "stack": "BM25, sentence-transformers, pytrec_eval"
   },
   {
-    "name": "comms-agent",
-    "result": "stateful graph · 9 of 24 flagged, 7 corrected through the review gate",
-    "stack": "Python stdlib · state graph · tool calling · audit trail",
-    "repo": "https://github.com/TanayPratapSingh/comms-agent"
+    "group": "recent",
+    "name": "JMA Wireless",
+    "repo": "",
+    "result": "Led a four person Lean Six Sigma team at a maker of cell tower and 5G equipment. Flattened 31 GB of nested PLC JSON to under 5 MB for Power BI. About $355K a year in projected opportunity, pending JMA Finance confirmation.",
+    "stack": "pandas, Power BI, DMAIC"
   },
   {
+    "group": "recent",
     "name": "ShopFloor AI",
-    "result": "0.85 F1 · 0.96 AUC across 5 failure modes · 7 service deployed stack",
-    "stack": "scikit-learn · MLflow · Kafka · ChromaDB · Docker",
-    "repo": "https://github.com/TanayPratapSingh/shopfloor-ai"
+    "repo": "https://github.com/TanayPratapSingh/shopfloor-ai",
+    "result": "Predictive maintenance on the AI4I 2020 dataset (0.85 F1, 0.96 AUC), Kafka KPI streaming, and RAG over 6 bundled SOPs, run as a seven service Docker Compose stack.",
+    "stack": "scikit-learn, MLflow, Kafka, ChromaDB"
   },
   {
-    "name": "The Perfect Lap",
-    "result": "2.78 lap MAE over 250K+ historical records",
-    "stack": "Random Forest · CatBoost · SHAP · Streamlit",
-    "repo": "https://github.com/TanayPratapSingh/the-perfect-lap"
+    "group": "recent",
+    "name": "handoff",
+    "repo": "https://github.com/TanayPratapSingh/handoff",
+    "result": "Supervisor orchestration where every escalation has a deadline and a declared outcome when nobody answers: ladder, safer substitute, drop, or freeze. 212 tests, no dependencies, simulated cluster, no LLM calls.",
+    "stack": "Python"
   },
   {
-    "name": "Multi Horizon Kp Index Prediction",
-    "result": "45% better than baseline over 96K+ hourly observations",
-    "stack": "LSTM · RNN · TensorFlow · time series",
-    "repo": "https://github.com/TanayPratapSingh/multi-horizon-aurora-kp-prediction"
+    "group": "recent",
+    "name": "comms-agent",
+    "repo": "https://github.com/TanayPratapSingh/comms-agent",
+    "result": "A stateful agent with a human review gate inside its control flow. On the sample run it flags 9 of 24 mentions and the reviewer corrects 7. Synthetic corpus, mock model, simulated reviewer.",
+    "stack": "Python, state graph, tool calling"
   },
   {
-    "name": "July Energy Demand Under Warming",
-    "result": "+25.4% peak load at +5°C · 9.2% savings modeled",
-    "stack": "R · regression · scenario modeling · Shiny",
-    "repo": "https://github.com/TanayPratapSingh/energy-usage-prediction"
-  },
-  {
-    "name": "JMA Wireless DMAIC Dashboard",
-    "result": "~$355K/yr recovered · 31 GB JSON reduced to a 5 MB pipeline",
-    "stack": "DMAIC · pandas · openpyxl · Power BI",
-    "repo": ""
-  },
-  {
+    "group": "recent",
     "name": "Project Mark",
-    "result": "4 verified statistical traps for frontier model evaluation",
-    "stack": "AI evaluation · analytics red teaming",
-    "repo": ""
+    "repo": "",
+    "result": "Four families of analytics traps with deterministic golden solutions, built to stress test frontier models. The models solved the clean versions.",
+    "stack": "Python, pandas, statistics"
   },
   {
-    "name": "Wealth, Health, and Education",
-    "result": "ANOVA F = 426.5 (p < 2e-16) across 180+ countries",
-    "stack": "R · ANOVA · data storytelling",
-    "repo": ""
+    "group": "recent",
+    "name": "media-pulse",
+    "repo": "https://github.com/TanayPratapSingh/media-pulse",
+    "result": "Media monitoring with confidence gated human review. Review lifts topic accuracy from 0.88 to 0.96 and sentiment from 0.50 to 0.85; ECE 0.156. Synthetic corpus about a fictional brand.",
+    "stack": "scikit-learn, VADER, Streamlit"
   },
   {
+    "group": "recent",
+    "name": "Kp Index Forecasting",
+    "repo": "https://github.com/TanayPratapSingh/multi-horizon-aurora-kp-prediction",
+    "result": "LSTM forecasts of the geomagnetic Kp index from solar wind data. At 1 hour, RMSE 0.738, 45% better than a mean baseline, over 96,000+ hourly observations.",
+    "stack": "TensorFlow, LSTM"
+  },
+  {
+    "group": "earlier",
+    "when": "2025",
+    "name": "The Perfect Lap",
+    "repo": "https://github.com/TanayPratapSingh/the-perfect-lap",
+    "result": "Predicts the first pit stop lap in Formula 1. MAE 2.78 laps on 250,000+ records, with a Streamlit app."
+  },
+  {
+    "group": "earlier",
+    "when": "2025",
+    "name": "July Energy Demand Under Warming",
+    "repo": "https://github.com/TanayPratapSingh/energy-usage-prediction",
+    "result": "Models July residential demand: +25.4% peak hour load at +5°C, and 9.2% savings from a 1°C setpoint shift. Random Forest R² 0.48. R and Shiny."
+  },
+  {
+    "group": "earlier",
+    "when": "2025",
+    "name": "Wealth Equals Health?",
+    "repo": "",
+    "result": "Gapminder data across 180+ countries: how far income explains life expectancy, and whether education does more than income to reduce child mortality. ANOVA F = 426.5."
+  },
+  {
+    "group": "earlier",
+    "when": "2025",
     "name": "Travel Itinerary Management System",
-    "result": "12 entity normalized schema · full itinerary in one call",
-    "stack": "MySQL · stored procedures · triggers · ERD",
-    "repo": ""
+    "repo": "",
+    "result": "A 12 entity normalized SQL schema where stored procedures and triggers enforce the business rules."
   },
   {
+    "group": "earlier",
+    "when": "2024",
     "name": "Uber Data Engineering Pipeline",
-    "result": "End to end GCP pipeline into a BigQuery star schema",
-    "stack": "GCP · BigQuery · SQL · dimensional modeling",
-    "repo": ""
+    "repo": "",
+    "result": "A GCP pipeline into a BigQuery star schema."
   },
   {
+    "group": "earlier",
+    "when": "2024",
     "name": "Digit Recognition from Scratch",
-    "result": "94% MNIST accuracy with no frameworks",
-    "stack": "NumPy · backpropagation",
-    "repo": ""
+    "repo": "",
+    "result": "A neural network in NumPy with hand written backpropagation. 94% on MNIST."
   },
   {
+    "group": "earlier",
+    "when": "2024",
     "name": "Real Time Big Data Inflow",
-    "result": "40 to 60% latency reduction across a 6 dimension comparison",
-    "stack": "IoT · edge · fog · stream architecture",
-    "repo": ""
+    "repo": "",
+    "result": "A literature review of 12+ primary sources comparing cloud and tiered edge architectures across six dimensions. For suitably partitioned workloads the comparison puts the latency reduction at 40 to 60%."
   }
 ]
