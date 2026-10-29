@@ -1,1 +1,1 @@
-**Languages:** Python, SQL, R, TypeScript
+**Languages:** Python, SQL, R, TypeScript, JavaScript

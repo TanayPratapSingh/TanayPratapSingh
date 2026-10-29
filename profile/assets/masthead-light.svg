@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 220" role="img" aria-labelledby="t">
+  <title id="t">Tanay Pratap Singh</title>
+  <style>
+    .bg { fill: #F2F0EA; stroke: #DCD8D0; }
+    .ink { fill: #15171B; }
+    .rule { stroke: #B9B4A9; }
+    .faint { stroke: #646A73; }
+    .met { stroke: #1B4D8F; }
+    .missed { fill: #B3261E; stroke: #B3261E; }
+    .name { font: 400 70px 'EB Garamond', Garamond, 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif; letter-spacing: -0.5px; }
+    .curve { animation: draw 1.6s ease-out 0.2s both; }
+    .break { animation: show 0.4s ease-out 1.6s both; }
+    @keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+    @keyframes show { from { opacity: 0; } to { opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) { .curve, .break { animation: none; } }
+  </style>
+  <rect class="bg" x="0.5" y="0.5" width="959" height="219" rx="4"/>
+  <text class="ink name" x="56" y="122">Tanay Pratap Singh</text>
+  <line class="rule" x1="56" y1="152" x2="700" y2="152" stroke-width="1"/>
+  <!-- crop marks around a reliability diagram: ideal diagonal dashed, measured curve leaves it at the marked point -->
+  <g class="faint" fill="none" stroke-width="1">
+    <path d="M762 45v-10h10M898 35h10v10M908 175v10h-10M772 185h-10v-10"/>
+    <path d="M762 185L908 35" stroke-dasharray="3 5"/>
+  </g>
+  <path class="met curve" d="M762 185L846 98C868 76 888 74 908 78" fill="none" stroke-width="2.5" stroke-linecap="round" pathLength="1" stroke-dasharray="1"/>
+  <g class="missed break">
+    <circle cx="846" cy="98" r="4"/>
+    <circle cx="846" cy="98" r="10" fill="none" stroke-width="1"/>
+  </g>
+</svg>

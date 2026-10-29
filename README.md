@@ -1,4 +1,7 @@
-# Tanay Pratap Singh
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/TanayPratapSingh/TanayPratapSingh/main/profile/assets/masthead-dark.svg">
+  <img src="https://raw.githubusercontent.com/TanayPratapSingh/TanayPratapSingh/main/profile/assets/masthead-light.svg" width="100%" alt="Tanay Pratap Singh, beside a calibration curve that follows the ideal diagonal and then breaks away from it at one marked point">
+</picture>
 
 I build agent and retrieval systems and the data pipelines under them, then
 measure where they break.
@@ -6,6 +9,10 @@ measure where they break.
 Syracuse, NY · [Portfolio](https://tanaypratapsingh.github.io) ·
 [LinkedIn](https://www.linkedin.com/in/tanay-pratap-singh-8360681b0/) ·
 [tanayyps@gmail.com](mailto:tanayyps@gmail.com)
+
+**On this page:** [Now](#now) · [Replications](#replications) ·
+[Live dashboards](#live-dashboards) · [Agents and evaluation](#agents-and-evaluation) ·
+[Data and ML systems](#data-and-ml-systems) · [Earlier](#earlier) · [Tools](#tools)
 
 ## Now
 
@@ -17,28 +24,79 @@ Syracuse, NY · [Portfolio](https://tanaypratapsingh.github.io) ·
   backbone: 0.89 validation AUC, with calibration error cut from 0.10 to 0.05.
 - Open to AI, data, ML, and analytics roles.
 
-## Projects, 2026
+## Replications
 
-| Project | What it does and what it found | Stack |
-|---|---|---|
-| [Replicating Dr. GRPO](https://github.com/TanayPratapSingh/drgrpo-replication) | RL post training on Qwen2.5-1.5B, GRPO against Dr. GRPO on the paper's own setup. The accuracy claim held (51.6% vs 51.2% on MATH500). Both length claims came out reversed. One seed, 100 LoRA steps. | PyTorch, vLLM, LoRA, MLX |
-| [Tool Dependency Graph](https://github.com/TanayPratapSingh/tool-dependency-graph) | Works out which agent tools have to run before which, from nothing but their JSON Schemas. 1,391 tools, 46 typed entities, 3,278 edges, 8 of 8 hand written assertions passing. | TypeScript, Bun, JSON Schema |
-| [Distributed ViT on CIFAR-10](https://github.com/TanayPratapSingh/distributed-vit-cifar10) | Data parallel training on 2x T4, with gradient equivalence tested before any speed was measured. Scaling efficiency was 98% in fp32 and 57% in fp16; 24 measured runs traced the drop to the host's 4 vCPUs. | PyTorch, DDP, FSDP |
-| [ZTF Transient Pipeline](https://github.com/TanayPratapSingh/ztf-transient-pipeline) | Replays a real night of ZTF alerts (27,378 Avro packets) through Kafka. 500 were loaded, scored by a multimodal CNN, and rebuilt in a dbt warehouse with 8 models and 21 tests. Coarse labels; a systems project first. | Kafka, Avro, TensorFlow, dbt, DuckDB, Airflow |
-| [Groundwork](https://github.com/TanayPratapSingh/Groundwork) | RAG evaluation, guardrails, and an LLM gateway on SQuAD v2.0. recall@5 0.921, ECE 0.045, prompt injection recall 0.884 on an unseen attack corpus, 113 tests. | Python, BM25, FastAPI, Docker |
-| [Replicating BEIR](https://github.com/TanayPratapSingh/beir-replication) | Six published retrieval results reproduced, four exact to three decimals. The one that missed came from a silent 100 token truncation default in the DPR encoder. | BM25, sentence-transformers, pytrec_eval |
-| JMA Wireless | Led a four person Lean Six Sigma team at a maker of cell tower and 5G equipment. Flattened 31 GB of nested PLC JSON to under 5 MB for Power BI. About $355K a year in projected opportunity, pending JMA Finance confirmation. | pandas, Power BI, DMAIC |
-| [ShopFloor AI](https://github.com/TanayPratapSingh/shopfloor-ai) | Predictive maintenance on the AI4I 2020 dataset (0.85 F1, 0.96 AUC), Kafka KPI streaming, and RAG over 6 bundled SOPs, run as a seven service Docker Compose stack. | scikit-learn, MLflow, Kafka, ChromaDB |
-| [handoff](https://github.com/TanayPratapSingh/handoff) | Supervisor orchestration where every escalation has a deadline and a declared outcome when nobody answers: ladder, safer substitute, drop, or freeze. 212 tests, no dependencies, simulated cluster, no LLM calls. | Python |
-| [comms-agent](https://github.com/TanayPratapSingh/comms-agent) | A stateful agent with a human review gate inside its control flow. On the sample run it flags 9 of 24 mentions and the reviewer corrects 7. Synthetic corpus, mock model, simulated reviewer. | Python, state graph, tool calling |
-| Project Mark | Four families of analytics traps with deterministic golden solutions, built to stress test frontier models. The models solved the clean versions. | Python, pandas, statistics |
-| [media-pulse](https://github.com/TanayPratapSingh/media-pulse) | Media monitoring with confidence gated human review. Review lifts topic accuracy from 0.88 to 0.96 and sentiment from 0.50 to 0.85; ECE 0.156. Synthetic corpus about a fictional brand. | scikit-learn, VADER, Streamlit |
-| [Kp Index Forecasting](https://github.com/TanayPratapSingh/multi-horizon-aurora-kp-prediction) | LSTM forecasts of the geomagnetic Kp index from solar wind data. At 1 hour, RMSE 0.738, 45% better than a mean baseline, over 96,000+ hourly observations. | TensorFlow, LSTM |
+*Does a published result hold when I rerun it on hardware I can afford?*
+
+<dl>
+<dt><a href="https://github.com/TanayPratapSingh/drgrpo-replication">Replicating Dr. GRPO</a></dt>
+<dd>RL post training on Qwen2.5-1.5B, GRPO against Dr. GRPO on the paper&#x27;s own setup. The accuracy claim held (51.6% vs 51.2% on MATH500). Both length claims came out reversed. One seed, 100 LoRA steps.<br><i>PyTorch, vLLM, LoRA, MLX</i></dd>
+<dt><a href="https://github.com/TanayPratapSingh/beir-replication">Replicating BEIR</a></dt>
+<dd>Six published retrieval results reproduced, four exact to three decimals. The one that missed came from a silent 100 token truncation default in the DPR encoder.<br><i>BM25, sentence-transformers, pytrec_eval</i></dd>
+</dl>
+
+## Live dashboards
+
+*Public data feeds, processed live in the browser.*
+
+<dl>
+<dt><a href="https://tanaypratapsingh.github.io/live/wiki.html">Wikipedia Edit Stream</a></dt>
+<dd>Every Wikipedia edit, counted exactly and with HyperLogLog, Count-Min and Space-Saving sketches, so each sketch&#x27;s error shows against its bound. In a logged 297 second run, HyperLogLog estimated 986.9 distinct editors against 983 exact (+0.4%).<br><i>JavaScript, Server Sent Events, streaming sketches</i> · <a href="https://github.com/TanayPratapSingh/wikipedia-edit-stream">source for Wikipedia Edit Stream</a></dd>
+<dt><a href="https://tanaypratapsingh.github.io/live/book.html">Order Book Microstructure</a></dt>
+<dd>A live Kraken BTC/USD order book rebuilt in the browser and checked against the exchange&#x27;s CRC32 on every update: 46,892 of 46,892 checksums verified. Order flow imbalance fit the price move with R² 0.54 at 1 second.<br><i>JavaScript, WebSocket, CRC32, OLS</i> · <a href="https://github.com/TanayPratapSingh/orderbook-microstructure">source for Order Book Microstructure</a></dd>
+<dt><a href="https://tanaypratapsingh.github.io/live/quakes.html">Live Earthquake Statistics</a></dt>
+<dd>The past week of USGS earthquakes, refreshed every minute, with Gutenberg-Richter and Omori aftershock fits and a log of every catalog revision. California b = 0.73, likely range 0.66 to 0.85; 7 catalog revisions caught in 45 minutes.<br><i>JavaScript, maximum likelihood, bootstrap, d3-geo</i> · <a href="https://github.com/TanayPratapSingh/live-earthquake-statistics">source for Live Earthquake Statistics</a></dd>
+<dt><a href="https://tanaypratapsingh.github.io/live/sun.html">Space Weather Nowcast</a></dt>
+<dd>Live NOAA solar wind followed from L1 to Earth: 9 NOAA feeds joined on time, the L1 to Earth delay from the spacecraft ephemeris, Newell coupling, the Shue magnetopause, and the aurora over Syracuse.<br><i>JavaScript, time series joins, d3-geo</i> · <a href="https://github.com/TanayPratapSingh/space-weather-nowcast">source for Space Weather Nowcast</a></dd>
+</dl>
+
+## Agents and evaluation
+
+*Agents, the verifiers and review gates around them, and how to tell when they fail.*
+
+<dl>
+<dt><a href="https://github.com/TanayPratapSingh/loophole">loophole</a></dt>
+<dd>RL environments where every task ships an honest verifier and a leaky one with a documented gap. GRPO on Qwen2.5 1.5B trained on the leaky SQL grader wrote the order losing query on 104 and 102 of 104 held out answers in 2 of 3 seeds, and on 0 when trained on the honest one.<br><i>Python, GRPO, TRL, vLLM, LoRA, DPO</i></dd>
+<dt><a href="https://github.com/TanayPratapSingh/Groundwork">Groundwork</a></dt>
+<dd>RAG evaluation, guardrails, and an LLM gateway on SQuAD v2.0. recall@5 0.921, ECE 0.045, prompt injection recall 0.884 on an unseen attack corpus, 113 tests.<br><i>Python, BM25, FastAPI, Docker</i></dd>
+<dt><a href="https://github.com/TanayPratapSingh/tool-dependency-graph">Tool Dependency Graph</a></dt>
+<dd>Works out which agent tools have to run before which, from nothing but their JSON Schemas. 1,391 tools, 46 typed entities, 3,278 edges, 8 of 8 hand written assertions passing.<br><i>TypeScript, Bun, JSON Schema</i></dd>
+<dt><a href="https://github.com/TanayPratapSingh/handoff">handoff</a></dt>
+<dd>Supervisor orchestration where every escalation has a deadline and a declared outcome when nobody answers: ladder, safer substitute, drop, or freeze. 212 tests, no dependencies, simulated cluster, no LLM calls.<br><i>Python</i></dd>
+<dt><a href="https://github.com/TanayPratapSingh/comms-agent">comms-agent</a></dt>
+<dd>A stateful agent with a human review gate inside its control flow. On the sample run it flags 9 of 24 mentions and the reviewer corrects 7. Synthetic corpus, mock model, simulated reviewer.<br><i>Python, state graph, tool calling</i></dd>
+<dt><a href="https://github.com/TanayPratapSingh/media-pulse">media-pulse</a></dt>
+<dd>Media monitoring with confidence gated human review. Review lifts topic accuracy from 0.88 to 0.96 and sentiment from 0.50 to 0.85; ECE 0.156. Synthetic corpus about a fictional brand.<br><i>scikit-learn, VADER, Streamlit</i></dd>
+<dt>Project Mark</dt>
+<dd>Four families of analytics traps with deterministic golden solutions, built to stress test frontier models. The models solved the clean versions.<br><i>Python, pandas, statistics</i></dd>
+</dl>
+
+## Data and ML systems
+
+*Pipelines, warehouses, and training runs.*
+
+<dl>
+<dt><a href="https://github.com/TanayPratapSingh/afterlife">afterlife</a></dt>
+<dd>One retraction registry built from four public ones (Retraction Watch, OpenAlex, PubMed, PMC), measuring how badly they disagree. Of 89,706 papers flagged by at least one, all eligible registries agree on 66.1% and exactly one flags 25.1%. Deployed to AWS and Databricks.<br><i>PySpark, Delta Lake, Databricks, dbt, AWS Lambda, Terraform</i></dd>
+<dt><a href="https://github.com/TanayPratapSingh/distributed-vit-cifar10">Distributed ViT on CIFAR-10</a></dt>
+<dd>Data parallel training on 2x T4, with gradient equivalence tested before any speed was measured. Scaling efficiency was 98% in fp32 and 57% in fp16; 24 measured runs traced the drop to the host&#x27;s 4 vCPUs.<br><i>PyTorch, DDP, FSDP</i></dd>
+<dt><a href="https://github.com/TanayPratapSingh/ztf-transient-pipeline">ZTF Transient Pipeline</a></dt>
+<dd>Replays a real night of ZTF alerts (27,378 Avro packets) through Kafka. 500 were loaded, scored by a multimodal CNN, and rebuilt in a dbt warehouse with 8 models and 21 tests. Coarse labels; a systems project first.<br><i>Kafka, Avro, TensorFlow, dbt, DuckDB, Airflow</i></dd>
+<dt>JMA Wireless</dt>
+<dd>Led a four person Lean Six Sigma team at a maker of cell tower and 5G equipment. Flattened 31 GB of nested PLC JSON to under 5 MB for Power BI. About $355K a year in projected opportunity, pending JMA Finance confirmation.<br><i>pandas, Power BI, DMAIC</i></dd>
+<dt><a href="https://github.com/TanayPratapSingh/shopfloor-ai">ShopFloor AI</a></dt>
+<dd>Predictive maintenance on the AI4I 2020 dataset (0.85 F1, 0.96 AUC), Kafka KPI streaming, and RAG over 6 bundled SOPs, run as a seven service Docker Compose stack.<br><i>scikit-learn, MLflow, Kafka, ChromaDB</i></dd>
+<dt><a href="https://github.com/TanayPratapSingh/multi-horizon-aurora-kp-prediction">Kp Index Forecasting</a></dt>
+<dd>LSTM forecasts of the geomagnetic Kp index from solar wind data. At 1 hour, RMSE 0.738, 45% better than a mean baseline, over 96,000+ hourly observations.<br><i>TensorFlow, LSTM</i></dd>
+</dl>
 
 Full write ups, including what each one gets wrong, are on the
 [portfolio](https://tanaypratapsingh.github.io).
 
 ## Earlier
+
+<details>
+<summary>Projects from 2024 and 2025</summary>
 
 - **[The Perfect Lap](https://github.com/TanayPratapSingh/the-perfect-lap)**, 2025. Predicts the first pit stop lap in Formula 1. MAE 2.78 laps on 250,000+ records, with a Streamlit app.
 - **[July Energy Demand Under Warming](https://github.com/TanayPratapSingh/energy-usage-prediction)**, 2025. Models July residential demand: +25.4% peak hour load at +5°C, and 9.2% savings from a 1°C setpoint shift. Random Forest R² 0.48. R and Shiny.
@@ -48,21 +106,25 @@ Full write ups, including what each one gets wrong, are on the
 - **Digit Recognition from Scratch**, 2024. A neural network in NumPy with hand written backpropagation. 94% on MNIST.
 - **Real Time Big Data Inflow**, 2024. A literature review of 12+ primary sources comparing cloud and tiered edge architectures across six dimensions. For suitably partitioned workloads the comparison puts the latency reduction at 40 to 60%.
 
-## Tools used in these projects
+</details>
 
-**Languages:** Python, SQL, R, TypeScript
+## Tools
+
+*Used in the projects above.*
+
+**Languages:** Python, SQL, R, TypeScript, JavaScript
 
 **Retrieval and LLM systems:** BM25, sentence-transformers, ChromaDB, RAG
 evaluation, calibration (ECE), guardrails, prompt injection detection, agent
 orchestration, tool calling
 
 **Training and ML:** PyTorch, TensorFlow, Keras, scikit-learn, XGBoost,
-CatBoost, SHAP, LoRA, vLLM, MLX
+CatBoost, SHAP, LoRA, vLLM, TRL, MLX
 
 **Data and analytics:** pandas, Kafka, Avro, dbt, DuckDB, BigQuery, Airflow,
-Power BI, Tableau
+Power BI, Tableau, PySpark, Delta Lake, Databricks
 
-**Serving and ops:** Docker, MLflow, FastAPI, GitHub Actions, Streamlit, Shiny
+**Serving and ops:** Docker, MLflow, FastAPI, GitHub Actions, Streamlit, Shiny, AWS Lambda, Terraform
 
 Coursework also covered Spark, Hive, HDFS, ksqlDB, MapReduce, Neo4j, Redis, and
 Cassandra.

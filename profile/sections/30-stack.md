@@ -1,3 +1,5 @@
-## Tools used in these projects
+## Tools
+
+*Used in the projects above.*
 
 <!--STACK-->

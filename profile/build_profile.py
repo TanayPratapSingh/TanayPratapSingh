@@ -1,10 +1,10 @@
 """Assemble README.md for the GitHub profile from profile/.
 
 Sections are plain markdown files concatenated in filename order. The project
-table and the earlier list are generated from profile/data/projects.json so a
-project is described in exactly one place.
+lists, one per theme, and the earlier list are generated from
+profile/data/projects.json so a project is described in exactly one place.
 """
-import io, json, pathlib
+import html, io, json, pathlib
 
 ROOT = pathlib.Path(__file__).parent
 OUT = ROOT.parent / "README.md"
@@ -27,18 +27,27 @@ def name(r):
     # link the name when the code is public; otherwise plain text
     return "[%s](%s)" % (r["name"], r["repo"]) if r.get("repo") else r["name"]
 
-def work_table():
-    out = ["| Project | What it does and what it found | Stack |", "|---|---|---|"]
-    for r in projects("recent"):
-        out.append("| %s | %s | %s |" % (name(r), r["result"], r.get("stack", "")))
-    return "\n".join(out)
+def work_list(group):
+    # a description list, not a table: it reflows on phones and screen readers
+    # announce each project as a term with its description
+    out = ["<dl>"]
+    for r in projects(group):
+        n = html.escape(r["name"])
+        link = r.get("live") or r.get("repo")
+        out.append('<dt><a href="%s">%s</a></dt>' % (link, n) if link else "<dt>%s</dt>" % n)
+        tail = "<i>%s</i>" % html.escape(r["stack"])
+        if r.get("live"):
+            tail += ' · <a href="%s">source for %s</a>' % (r["repo"], n)
+        out.append("<dd>%s<br>%s</dd>" % (html.escape(r["result"]), tail))
+    return "\n".join(out + ["</dl>"])
 
 def earlier_list():
     return "\n".join("- **%s**, %s. %s" % (name(r), r["when"], r["result"]) for r in projects("earlier"))
 
 def build():
     text = "\n\n".join(sections("sections"))
-    text = text.replace("<!--WORK-->", work_table())
+    for group in ("replications", "live", "agents", "systems"):
+        text = text.replace("<!--%s-->" % group.upper(), work_list(group))
     text = text.replace("<!--EARLIER-->", earlier_list())
     text = text.replace("<!--STACK-->", "\n\n".join(sections("stack")))
     io.open(OUT, "w", encoding="utf-8").write(text.rstrip() + "\n")
