@@ -1,9 +1,6 @@
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/TanayPratapSingh/TanayPratapSingh/main/profile/assets/masthead-dark.svg">
-  <img src="https://raw.githubusercontent.com/TanayPratapSingh/TanayPratapSingh/main/profile/assets/masthead-light.svg" width="100%" alt="Tanay Pratap Singh, beside a calibration curve that follows the ideal diagonal and then breaks away from it at one marked point">
-</picture>
+<!--ART:masthead-->
 
-I build agent and retrieval systems and the data pipelines under them, then
+**Fig. 1.** I build agent and retrieval systems and the data pipelines under them, then
 measure where they break.
 
 Syracuse, NY · [Portfolio](https://tanaypratapsingh.github.io) ·

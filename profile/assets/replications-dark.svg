@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 64">
+<style>
+@keyframes draw{from{stroke-dashoffset:1}}
+@keyframes fade{from{opacity:0}}
+@keyframes fadeout{from{opacity:1}}
+@keyframes scan{from{transform:translateX(0)}}
+@keyframes drop{from{transform:translateY(-26px);opacity:0}}
+@keyframes flow{from{transform:translateX(-240px);opacity:0}}
+@keyframes travel{from{transform:translateX(-774px)}}
+@keyframes lit{from{stroke:#8B919A}}
+@keyframes pulse{0%{transform:scale(.4);opacity:0}1%{opacity:.9}100%{transform:scale(2.6);opacity:0}}
+.pulse{transform-box:fill-box;transform-origin:center;opacity:0}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<rect x="48" y="26" width="18" height="18" fill="none" stroke="#8B919A" style=""/>
+<circle cx="57.0" cy="35.0" r="4.5" fill="#8AB4F8" style="animation:drop 0.45s cubic-bezier(.3,1.5,.5,1) 0.20s both"/>
+<rect x="84" y="26" width="18" height="18" fill="none" stroke="#8B919A" style=""/>
+<circle cx="93.0" cy="35.0" r="4.5" fill="#8AB4F8" style="animation:drop 0.45s cubic-bezier(.3,1.5,.5,1) 0.27s both"/>
+<rect x="120" y="26" width="18" height="18" fill="none" stroke="#8B919A" style=""/>
+<circle cx="129.0" cy="35.0" r="4.5" fill="#8AB4F8" style="animation:drop 0.45s cubic-bezier(.3,1.5,.5,1) 0.34s both"/>
+<rect x="156" y="26" width="18" height="18" fill="none" stroke="#8B919A" style=""/>
+<circle cx="165.0" cy="35.0" r="4.5" fill="#8AB4F8" style="animation:drop 0.45s cubic-bezier(.3,1.5,.5,1) 0.41s both"/>
+<rect x="192" y="26" width="18" height="18" fill="none" stroke="#8B919A" style=""/>
+<circle cx="201.0" cy="35.0" r="4.5" fill="#8AB4F8" style="animation:drop 0.45s cubic-bezier(.3,1.5,.5,1) 0.48s both"/>
+<rect x="228" y="26" width="18" height="18" fill="none" stroke="#8B919A" style=""/>
+<circle cx="237.0" cy="35.0" r="4.5" fill="#8AB4F8" style="animation:drop 0.45s cubic-bezier(.3,1.5,.5,1) 0.55s both"/>
+<rect x="264" y="26" width="18" height="18" fill="none" stroke="#8B919A" style=""/>
+<circle cx="273.0" cy="35.0" r="4.5" fill="#8AB4F8" style="animation:drop 0.45s cubic-bezier(.3,1.5,.5,1) 0.62s both"/>
+<rect x="300" y="26" width="18" height="18" fill="none" stroke="#8B919A" style=""/>
+<circle cx="309.0" cy="35.0" r="4.5" fill="#8AB4F8" style="animation:drop 0.45s cubic-bezier(.3,1.5,.5,1) 0.69s both"/>
+<rect x="336" y="26" width="18" height="18" fill="none" stroke="#8B919A" style=""/>
+<circle cx="345.0" cy="35.0" r="4.5" fill="#8AB4F8" style="animation:drop 0.45s cubic-bezier(.3,1.5,.5,1) 0.76s both"/>
+<rect x="372" y="26" width="18" height="18" fill="none" stroke="#8B919A" style=""/>
+<circle cx="381.0" cy="35.0" r="4.5" fill="#8AB4F8" style="animation:drop 0.45s cubic-bezier(.3,1.5,.5,1) 0.83s both"/>
+<rect x="408" y="26" width="18" height="18" fill="none" stroke="#8B919A" style=""/>
+<circle cx="417.0" cy="35.0" r="4.5" fill="#8AB4F8" style="animation:drop 0.45s cubic-bezier(.3,1.5,.5,1) 0.90s both"/>
+<rect x="444" y="26" width="18" height="18" fill="none" stroke="#8B919A" style=""/>
+<circle cx="453.0" cy="35.0" r="4.5" fill="#8AB4F8" style="animation:drop 0.45s cubic-bezier(.3,1.5,.5,1) 0.97s both"/>
+<rect x="480" y="26" width="18" height="18" fill="none" stroke="#8B919A" style=""/>
+<circle cx="489.0" cy="35.0" r="4.5" fill="#8AB4F8" style="animation:drop 0.45s cubic-bezier(.3,1.5,.5,1) 1.04s both"/>
+<rect x="516" y="26" width="18" height="18" fill="none" stroke="#8B919A" style=""/>
+<circle cx="525.0" cy="35.0" r="4.5" fill="#8AB4F8" style="animation:drop 0.45s cubic-bezier(.3,1.5,.5,1) 1.11s both"/>
+<rect x="552" y="26" width="18" height="18" fill="none" stroke="#8B919A" style=""/>
+<circle cx="561.0" cy="35.0" r="4.5" fill="#8AB4F8" style="animation:drop 0.45s cubic-bezier(.3,1.5,.5,1) 1.18s both"/>
+<rect x="588" y="26" width="18" height="18" fill="none" stroke="#8B919A" style=""/>
+<circle cx="597.0" cy="35.0" r="4.5" fill="#8AB4F8" style="animation:drop 0.45s cubic-bezier(.3,1.5,.5,1) 1.25s both"/>
+<rect x="624" y="26" width="18" height="18" fill="none" stroke="#F28B82" style="animation:lit 0.30s ease-out 1.77s both"/>
+<circle cx="639.0" cy="31.0" r="4.5" fill="#F28B82" style="animation:drop 0.45s cubic-bezier(.3,1.5,.5,1) 1.32s both"/>
+<rect x="660" y="26" width="18" height="18" fill="none" stroke="#8B919A" style=""/>
+<circle cx="669.0" cy="35.0" r="4.5" fill="#8AB4F8" style="animation:drop 0.45s cubic-bezier(.3,1.5,.5,1) 1.39s both"/>
+<rect x="696" y="26" width="18" height="18" fill="none" stroke="#8B919A" style=""/>
+<circle cx="705.0" cy="35.0" r="4.5" fill="#8AB4F8" style="animation:drop 0.45s cubic-bezier(.3,1.5,.5,1) 1.46s both"/>
+<rect x="732" y="26" width="18" height="18" fill="none" stroke="#8B919A" style=""/>
+<circle cx="741.0" cy="35.0" r="4.5" fill="#8AB4F8" style="animation:drop 0.45s cubic-bezier(.3,1.5,.5,1) 1.53s both"/>
+<rect x="768" y="26" width="18" height="18" fill="none" stroke="#8B919A" style=""/>
+<circle cx="777.0" cy="35.0" r="4.5" fill="#8AB4F8" style="animation:drop 0.45s cubic-bezier(.3,1.5,.5,1) 1.60s both"/>
+<rect x="804" y="26" width="18" height="18" fill="none" stroke="#8B919A" style=""/>
+<circle cx="813.0" cy="35.0" r="4.5" fill="#8AB4F8" style="animation:drop 0.45s cubic-bezier(.3,1.5,.5,1) 1.67s both"/>
+<rect x="840" y="26" width="18" height="18" fill="none" stroke="#8B919A" style=""/>
+<circle cx="849.0" cy="35.0" r="4.5" fill="#8AB4F8" style="animation:drop 0.45s cubic-bezier(.3,1.5,.5,1) 1.74s both"/>
+<rect x="876" y="26" width="18" height="18" fill="none" stroke="#8B919A" style=""/>
+<circle cx="885.0" cy="35.0" r="4.5" fill="#8AB4F8" style="animation:drop 0.45s cubic-bezier(.3,1.5,.5,1) 1.81s both"/>
+</svg>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 64">
+<style>
+@keyframes draw{from{stroke-dashoffset:1}}
+@keyframes fade{from{opacity:0}}
+@keyframes fadeout{from{opacity:1}}
+@keyframes scan{from{transform:translateX(0)}}
+@keyframes drop{from{transform:translateY(-26px);opacity:0}}
+@keyframes flow{from{transform:translateX(-240px);opacity:0}}
+@keyframes travel{from{transform:translateX(-774px)}}
+@keyframes lit{from{stroke:#8B919A}}
+@keyframes pulse{0%{transform:scale(.4);opacity:0}1%{opacity:.9}100%{transform:scale(2.6);opacity:0}}
+.pulse{transform-box:fill-box;transform-origin:center;opacity:0}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<line x1="40" y1="32" x2="920" y2="32" stroke="#4A4F57"/>
+<path d="M40 32H814" stroke="#8AB4F8" stroke-width="2" pathLength="1" stroke-dasharray="1" style="animation:draw 2.80s linear 0.30s both"/>
+<line x1="200" y1="18" x2="200" y2="46" stroke="#8AB4F8" stroke-width="2.5" stroke-linecap="round" style="animation:lit 0.25s ease-out 0.85s both"/>
+<line x1="360" y1="18" x2="360" y2="46" stroke="#8AB4F8" stroke-width="2.5" stroke-linecap="round" style="animation:lit 0.25s ease-out 1.43s both"/>
+<line x1="520" y1="18" x2="520" y2="46" stroke="#8AB4F8" stroke-width="2.5" stroke-linecap="round" style="animation:lit 0.25s ease-out 2.01s both"/>
+<line x1="680" y1="18" x2="680" y2="46" stroke="#8AB4F8" stroke-width="2.5" stroke-linecap="round" style="animation:lit 0.25s ease-out 2.59s both"/>
+<line x1="840" y1="18" x2="840" y2="46" stroke="#F28B82" stroke-width="2.5" stroke-linecap="round" style="animation:lit 0.25s ease-out 3.10s both"/>
+<circle cx="814" cy="32" r="6" fill="#ECE9E1" style="animation:travel 2.80s linear 0.30s both"/>
+<circle class="pulse" cx="814" cy="32" r="7" fill="none" stroke="#F28B82" stroke-width="1.25" style="animation:pulse 0.90s ease-out 3.10s both"/>
+</svg>

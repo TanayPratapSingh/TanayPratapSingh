@@ -1,10 +1,14 @@
 ## Replications
 
+<!--ART:replications-->
+
 *Does a published result hold when I rerun it on hardware I can afford?*
 
 <!--REPLICATIONS-->
 
 ## Live dashboards
+
+<!--ART:live-->
 
 *Public data feeds, processed live in the browser.*
 
@@ -12,11 +16,15 @@
 
 ## Agents and evaluation
 
+<!--ART:agents-->
+
 *Agents, the verifiers and review gates around them, and how to tell when they fail.*
 
 <!--AGENTS-->
 
 ## Data and ML systems
+
+<!--ART:systems-->
 
 *Pipelines, warehouses, and training runs.*
 

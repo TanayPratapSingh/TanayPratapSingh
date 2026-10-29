@@ -4,10 +4,12 @@ Sections are plain markdown files concatenated in filename order. The project
 lists, one per theme, and the earlier list are generated from
 profile/data/projects.json so a project is described in exactly one place.
 """
-import html, io, json, pathlib
+import html, io, json, pathlib, re
 
 ROOT = pathlib.Path(__file__).parent
 OUT = ROOT.parent / "README.md"
+RAW = "https://raw.githubusercontent.com/TanayPratapSingh/TanayPratapSingh/main/profile/assets/"
+ALT = {"masthead": "A measured line tracks its expected value, then breaks away from it at a point marked in red"}
 
 def read(p):
     return io.open(p, encoding="utf-8").read().rstrip()
@@ -44,10 +46,17 @@ def work_list(group):
 def earlier_list():
     return "\n".join("- **%s**, %s. %s" % (name(r), r["when"], r["result"]) for r in projects("earlier"))
 
+def art(name):
+    # GitHub serves the source matching its own theme; alt="" marks a strip as decorative
+    return ('<picture>\n  <source media="(prefers-color-scheme: dark)" srcset="%s%s-dark.svg">\n'
+            '  <img src="%s%s-light.svg" width="100%%" alt="%s">\n</picture>'
+            % (RAW, name, RAW, name, ALT.get(name, "")))
+
 def build():
     text = "\n\n".join(sections("sections"))
     for group in ("replications", "live", "agents", "systems"):
         text = text.replace("<!--%s-->" % group.upper(), work_list(group))
+    text = re.sub(r"<!--ART:(\w+)-->", lambda m: art(m.group(1)), text)
     text = text.replace("<!--EARLIER-->", earlier_list())
     text = text.replace("<!--STACK-->", "\n\n".join(sections("stack")))
     io.open(OUT, "w", encoding="utf-8").write(text.rstrip() + "\n")

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 64">
+<style>
+@keyframes draw{from{stroke-dashoffset:1}}
+@keyframes fade{from{opacity:0}}
+@keyframes fadeout{from{opacity:1}}
+@keyframes scan{from{transform:translateX(0)}}
+@keyframes drop{from{transform:translateY(-26px);opacity:0}}
+@keyframes flow{from{transform:translateX(-240px);opacity:0}}
+@keyframes travel{from{transform:translateX(-774px)}}
+@keyframes lit{from{stroke:#646A73}}
+@keyframes pulse{0%{transform:scale(.4);opacity:0}1%{opacity:.9}100%{transform:scale(2.6);opacity:0}}
+.pulse{transform-box:fill-box;transform-origin:center;opacity:0}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<path d="M40 10 C280 10 360 32 520 32" fill="none" stroke="#1B4D8F" stroke-width="1.5" stroke-linecap="round" pathLength="1" stroke-dasharray="1" style="animation:draw 1.60s ease-in-out 0.20s both"/>
+<path d="M40 24 C280 24 360 32 520 32" fill="none" stroke="#1B4D8F" stroke-width="1.5" stroke-linecap="round" pathLength="1" stroke-dasharray="1" style="animation:draw 1.60s ease-in-out 0.20s both"/>
+<path d="M40 40 C280 40 360 32 520 32" fill="none" stroke="#1B4D8F" stroke-width="1.5" stroke-linecap="round" pathLength="1" stroke-dasharray="1" style="animation:draw 1.60s ease-in-out 0.20s both"/>
+<path d="M40 54 C280 54 380 50 600 50" fill="none" stroke="#646A73" stroke-width="1.5" stroke-linecap="round" pathLength="1" stroke-dasharray="1" style="animation:draw 1.60s ease-in-out 0.20s both"/>
+<path d="M520 32H920" fill="none" stroke="#1B4D8F" stroke-width="2.25" stroke-linecap="round" pathLength="1" stroke-dasharray="1" style="animation:draw 1.20s ease-out 1.80s both"/>
+<circle cx="600" cy="50" r="3.5" fill="#B3261E" style="animation:fade 0.30s ease-out 1.80s both"/>
+<circle class="pulse" cx="600" cy="50" r="7" fill="none" stroke="#B3261E" stroke-width="1.25" style="animation:pulse 0.90s ease-out 1.80s both"/>
+</svg>

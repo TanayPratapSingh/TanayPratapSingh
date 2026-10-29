@@ -1,9 +1,9 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/TanayPratapSingh/TanayPratapSingh/main/profile/assets/masthead-dark.svg">
-  <img src="https://raw.githubusercontent.com/TanayPratapSingh/TanayPratapSingh/main/profile/assets/masthead-light.svg" width="100%" alt="Tanay Pratap Singh, beside a calibration curve that follows the ideal diagonal and then breaks away from it at one marked point">
+  <img src="https://raw.githubusercontent.com/TanayPratapSingh/TanayPratapSingh/main/profile/assets/masthead-light.svg" width="100%" alt="A measured line tracks its expected value, then breaks away from it at a point marked in red">
 </picture>
 
-I build agent and retrieval systems and the data pipelines under them, then
+**Fig. 1.** I build agent and retrieval systems and the data pipelines under them, then
 measure where they break.
 
 Syracuse, NY · [Portfolio](https://tanaypratapsingh.github.io) ·
@@ -26,6 +26,11 @@ Syracuse, NY · [Portfolio](https://tanaypratapsingh.github.io) ·
 
 ## Replications
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/TanayPratapSingh/TanayPratapSingh/main/profile/assets/replications-dark.svg">
+  <img src="https://raw.githubusercontent.com/TanayPratapSingh/TanayPratapSingh/main/profile/assets/replications-light.svg" width="100%" alt="">
+</picture>
+
 *Does a published result hold when I rerun it on hardware I can afford?*
 
 <dl>
@@ -36,6 +41,11 @@ Syracuse, NY · [Portfolio](https://tanaypratapsingh.github.io) ·
 </dl>
 
 ## Live dashboards
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/TanayPratapSingh/TanayPratapSingh/main/profile/assets/live-dark.svg">
+  <img src="https://raw.githubusercontent.com/TanayPratapSingh/TanayPratapSingh/main/profile/assets/live-light.svg" width="100%" alt="">
+</picture>
 
 *Public data feeds, processed live in the browser.*
 
@@ -51,6 +61,11 @@ Syracuse, NY · [Portfolio](https://tanaypratapsingh.github.io) ·
 </dl>
 
 ## Agents and evaluation
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/TanayPratapSingh/TanayPratapSingh/main/profile/assets/agents-dark.svg">
+  <img src="https://raw.githubusercontent.com/TanayPratapSingh/TanayPratapSingh/main/profile/assets/agents-light.svg" width="100%" alt="">
+</picture>
 
 *Agents, the verifiers and review gates around them, and how to tell when they fail.*
 
@@ -72,6 +87,11 @@ Syracuse, NY · [Portfolio](https://tanaypratapsingh.github.io) ·
 </dl>
 
 ## Data and ML systems
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/TanayPratapSingh/TanayPratapSingh/main/profile/assets/systems-dark.svg">
+  <img src="https://raw.githubusercontent.com/TanayPratapSingh/TanayPratapSingh/main/profile/assets/systems-light.svg" width="100%" alt="">
+</picture>
 
 *Pipelines, warehouses, and training runs.*
 
