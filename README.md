@@ -1,9 +1,17 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/TanayPratapSingh/TanayPratapSingh/main/profile/assets/masthead-dark.svg">
-  <img src="https://raw.githubusercontent.com/TanayPratapSingh/TanayPratapSingh/main/profile/assets/masthead-light.svg" width="100%" alt="A measured line tracks its expected value, then breaks away from it at a point marked in red">
+  <img src="https://raw.githubusercontent.com/TanayPratapSingh/TanayPratapSingh/main/profile/assets/masthead-light.svg" width="100%" alt="Line chart of six GRPO training runs. In the three trained on the leaky grader, the share of top 3 SQL queries that lose their order rises to between 95 and 100 percent in steps 20 to 39; two stay near 100 percent and one falls back to 0. In the three trained on the honest grader it falls to 0 by step 40.">
 </picture>
 
-**Fig. 1.** I build agent and retrieval systems and the data pipelines under them, then
+**Fig. 1.** Six GRPO runs on Qwen2.5 1.5B, 100 steps each: three trained on a
+leaky SQL grader (red) and three on an honest one (blue). The leaky grader checks
+that a "top 3" answer returns the right three products but not their order, so a
+query that sorts inside a subquery and loses the order is paid like a correct
+one. All three leaky runs took that query up in steps 20 to 39 (shaded), and seed
+2 later let it go; under the honest grader it was gone by step 40. Data: each
+run's `sql_shape.json`, tabled in [loophole's README](https://github.com/TanayPratapSingh/loophole#headline).
+
+I build agent and retrieval systems and the data pipelines under them, then
 measure where they break.
 
 Syracuse, NY · [Portfolio](https://tanaypratapsingh.github.io) ·
@@ -26,12 +34,18 @@ Syracuse, NY · [Portfolio](https://tanaypratapsingh.github.io) ·
 
 ## Replications
 
+*Does a published result hold when I rerun it on hardware I can afford?*
+
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/TanayPratapSingh/TanayPratapSingh/main/profile/assets/replications-dark.svg">
-  <img src="https://raw.githubusercontent.com/TanayPratapSingh/TanayPratapSingh/main/profile/assets/replications-light.svg" width="100%" alt="">
+  <img src="https://raw.githubusercontent.com/TanayPratapSingh/TanayPratapSingh/main/profile/assets/replications-light.svg" width="100%" alt="Line chart of DPR nDCG@10 on SciFact against document max length. Title [SEP] text rises from 0.276 at the default 100 tokens to 0.318 at 512, matching the published 0.318; title + text rises from 0.260 to 0.310.">
 </picture>
 
-*Does a published result hold when I rerun it on hardware I can afford?*
+**Fig. 2.** The one BEIR result that missed, and why. DPR on SciFact scored 0.276
+nDCG@10 against a published 0.318. Its document encoder silently truncates at
+100 tokens; as the limit rises the gap closes, and at 512 tokens title [SEP]
+text scores 0.318. Data: `runs/dpr-ablation-scifact-len*/report.json` in
+[beir-replication](https://github.com/TanayPratapSingh/beir-replication/tree/main/runs).
 
 <dl>
 <dt><a href="https://github.com/TanayPratapSingh/drgrpo-replication">Replicating Dr. GRPO</a></dt>
@@ -42,12 +56,18 @@ Syracuse, NY · [Portfolio](https://tanaypratapsingh.github.io) ·
 
 ## Live dashboards
 
+*Public data feeds, processed live in the browser.*
+
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/TanayPratapSingh/TanayPratapSingh/main/profile/assets/live-dark.svg">
-  <img src="https://raw.githubusercontent.com/TanayPratapSingh/TanayPratapSingh/main/profile/assets/live-light.svg" width="100%" alt="">
+  <img src="https://raw.githubusercontent.com/TanayPratapSingh/TanayPratapSingh/main/profile/assets/live-light.svg" width="100%" alt="Forest plot of Gutenberg-Richter b-values with 95 percent bootstrap intervals: California 0.73 (0.66 to 0.85), Alaska 0.72 (0.61 to 0.84), global M4.5 and up 1.50 (1.16 to 2.04), all regions pooled 0.34 (0.32 to 0.40).">
 </picture>
 
-*Public data feeds, processed live in the browser.*
+**Fig. 3.** Gutenberg-Richter b-values from the past week of the USGS feed, as
+computed live on October 8, 2026, with 95% bootstrap intervals. The dashed line
+marks b = 1. Pooling every region gives 0.34, a number about mixing magnitude
+scales and networks rather than about the Earth, and the dashboard says so
+beside it. Data: [live/runs/2026-10-08-quakes-run.txt](https://github.com/TanayPratapSingh/tanaypratapsingh.github.io/blob/main/live/runs/2026-10-08-quakes-run.txt).
 
 <dl>
 <dt><a href="https://tanaypratapsingh.github.io/live/wiki.html">Wikipedia Edit Stream</a></dt>
@@ -62,12 +82,8 @@ Syracuse, NY · [Portfolio](https://tanaypratapsingh.github.io) ·
 
 ## Agents and evaluation
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/TanayPratapSingh/TanayPratapSingh/main/profile/assets/agents-dark.svg">
-  <img src="https://raw.githubusercontent.com/TanayPratapSingh/TanayPratapSingh/main/profile/assets/agents-light.svg" width="100%" alt="">
-</picture>
-
-*Agents, the verifiers and review gates around them, and how to tell when they fail.*
+*Agents, the verifiers and review gates around them, and how to tell when they
+fail. Fig. 1 at the top is from loophole.*
 
 <dl>
 <dt><a href="https://github.com/TanayPratapSingh/loophole">loophole</a></dt>
@@ -88,12 +104,19 @@ Syracuse, NY · [Portfolio](https://tanaypratapsingh.github.io) ·
 
 ## Data and ML systems
 
+*Pipelines, warehouses, and training runs.*
+
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/TanayPratapSingh/TanayPratapSingh/main/profile/assets/systems-dark.svg">
-  <img src="https://raw.githubusercontent.com/TanayPratapSingh/TanayPratapSingh/main/profile/assets/systems-light.svg" width="100%" alt="">
+  <img src="https://raw.githubusercontent.com/TanayPratapSingh/TanayPratapSingh/main/profile/assets/systems-light.svg" width="100%" alt="Dot plot of the ten retracted papers cited most after retraction, citations through the retraction year against after it. eLife 2018: 191 then 1,031. ACS Nano 2012: 39 then 1,013. NEJM 2020: 645 then 783. Lancet 2020: 632 then 569.">
 </picture>
 
-*Pipelines, warehouses, and training runs.*
+**Fig. 4.** Retraction did not stop the citations. The ten retracted papers cited
+most after retraction, out of 54,737 whose whole post retraction period falls
+inside OpenAlex's citation window: citations through the retraction year (open
+circles) against citations after it (red). Across all 54,737, 60.0% were cited
+after retraction. Journals are read from each DOI. Data: [afterlife
+RESULTS.md](https://github.com/TanayPratapSingh/afterlife/blob/main/RESULTS.md), key `afterlife`.
 
 <dl>
 <dt><a href="https://github.com/TanayPratapSingh/afterlife">afterlife</a></dt>

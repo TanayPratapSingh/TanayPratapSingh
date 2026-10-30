@@ -1,22 +1,57 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 64">
-<style>
-@keyframes draw{from{stroke-dashoffset:1}}
-@keyframes fade{from{opacity:0}}
-@keyframes fadeout{from{opacity:1}}
-@keyframes scan{from{transform:translateX(0)}}
-@keyframes drop{from{transform:translateY(-26px);opacity:0}}
-@keyframes flow{from{transform:translateX(-240px);opacity:0}}
-@keyframes travel{from{transform:translateX(-774px)}}
-@keyframes lit{from{stroke:#8B919A}}
-@keyframes pulse{0%{transform:scale(.4);opacity:0}1%{opacity:.9}100%{transform:scale(2.6);opacity:0}}
-.pulse{transform-box:fill-box;transform-origin:center;opacity:0}
-@media (prefers-reduced-motion:reduce){*{animation:none!important}}
-</style>
-<path d="M40 10 C280 10 360 32 520 32" fill="none" stroke="#8AB4F8" stroke-width="1.5" stroke-linecap="round" pathLength="1" stroke-dasharray="1" style="animation:draw 1.60s ease-in-out 0.20s both"/>
-<path d="M40 24 C280 24 360 32 520 32" fill="none" stroke="#8AB4F8" stroke-width="1.5" stroke-linecap="round" pathLength="1" stroke-dasharray="1" style="animation:draw 1.60s ease-in-out 0.20s both"/>
-<path d="M40 40 C280 40 360 32 520 32" fill="none" stroke="#8AB4F8" stroke-width="1.5" stroke-linecap="round" pathLength="1" stroke-dasharray="1" style="animation:draw 1.60s ease-in-out 0.20s both"/>
-<path d="M40 54 C280 54 380 50 600 50" fill="none" stroke="#8B919A" stroke-width="1.5" stroke-linecap="round" pathLength="1" stroke-dasharray="1" style="animation:draw 1.60s ease-in-out 0.20s both"/>
-<path d="M520 32H920" fill="none" stroke="#8AB4F8" stroke-width="2.25" stroke-linecap="round" pathLength="1" stroke-dasharray="1" style="animation:draw 1.20s ease-out 1.80s both"/>
-<circle cx="600" cy="50" r="3.5" fill="#F28B82" style="animation:fade 0.30s ease-out 1.80s both"/>
-<circle class="pulse" cx="600" cy="50" r="7" fill="none" stroke="#F28B82" stroke-width="1.25" style="animation:pulse 0.90s ease-out 1.80s both"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400">
+<style>text{font-family:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif}@keyframes draw{from{stroke-dashoffset:1}}@keyframes fade{from{opacity:0}}@keyframes fadeout{from{opacity:1}}@keyframes m0{from{transform:translateX(-455.0px)}}@keyframes m1{from{transform:translateX(-527.6px)}}@keyframes m2{from{transform:translateX(-353.2px)}}@keyframes m3{from{transform:translateX(-74.8px)}}@keyframes m4{from{transform:translateX(264.9px)}}@keyframes m5{from{transform:translateX(-277.9px)}}@keyframes m6{from{transform:translateX(-35.2px)}}@keyframes m7{from{transform:translateX(-128.9px)}}@keyframes m8{from{transform:translateX(34.1px)}}@keyframes m9{from{transform:translateX(132.2px)}}@media (prefers-reduced-motion:reduce){*{animation:none!important}}</style>
+<circle cx="256" cy="18" r="5" fill="none" stroke="#9198A1" stroke-width="1.5"/>
+<text x="268.0" y="24.0" font-size="17" text-anchor="start" fill="#9198A1" font-style="italic" style="">citations through the retraction year</text>
+<circle cx="586" cy="18" r="5" fill="#F28B82"/>
+<text x="598.0" y="24.0" font-size="17" text-anchor="start" fill="#9198A1" font-style="italic" style="">citations after it</text>
+<line x1="250.0" x2="250.0" y1="48" y2="345" stroke="#3D444D"/>
+<text x="250.0" y="371.0" font-size="17" text-anchor="middle" fill="#9198A1" style="">0</text>
+<line x1="412.5" x2="412.5" y1="48" y2="345" stroke="#3D444D"/>
+<text x="412.5" y="371.0" font-size="17" text-anchor="middle" fill="#9198A1" style="">300</text>
+<line x1="575.0" x2="575.0" y1="48" y2="345" stroke="#3D444D"/>
+<text x="575.0" y="371.0" font-size="17" text-anchor="middle" fill="#9198A1" style="">600</text>
+<line x1="737.5" x2="737.5" y1="48" y2="345" stroke="#3D444D"/>
+<text x="737.5" y="371.0" font-size="17" text-anchor="middle" fill="#9198A1" style="">900</text>
+<line x1="900.0" x2="900.0" y1="48" y2="345" stroke="#3D444D"/>
+<text x="900.0" y="371.0" font-size="17" text-anchor="middle" fill="#9198A1" style="">1,200</text>
+<text x="230.0" y="70.0" font-size="17" text-anchor="end" fill="#F0F6FC" style="">eLife, 2018</text>
+<path d="M353.5 64H808.5" stroke="#9198A1" stroke-width="1.5" pathLength="1" stroke-dasharray="1" style="animation:draw 1.00s ease-out 0.50s both"/>
+<circle cx="353.5" cy="64" r="5" fill="none" stroke="#9198A1" stroke-width="1.5"/>
+<circle cx="808.5" cy="64" r="5" fill="#F28B82" style="animation:m0 1.00s ease-out 0.50s both"/>
+<text x="230.0" y="99.0" font-size="17" text-anchor="end" fill="#F0F6FC" style="">ACS Nano, 2012</text>
+<path d="M271.1 93H798.7" stroke="#9198A1" stroke-width="1.5" pathLength="1" stroke-dasharray="1" style="animation:draw 1.00s ease-out 0.62s both"/>
+<circle cx="271.1" cy="93" r="5" fill="none" stroke="#9198A1" stroke-width="1.5"/>
+<circle cx="798.7" cy="93" r="5" fill="#F28B82" style="animation:m1 1.00s ease-out 0.62s both"/>
+<text x="230.0" y="128.0" font-size="17" text-anchor="end" fill="#F0F6FC" style="">J Hum Reprod Sci, 2017</text>
+<path d="M362.1 122H715.3" stroke="#9198A1" stroke-width="1.5" pathLength="1" stroke-dasharray="1" style="animation:draw 1.00s ease-out 0.74s both"/>
+<circle cx="362.1" cy="122" r="5" fill="none" stroke="#9198A1" stroke-width="1.5"/>
+<circle cx="715.3" cy="122" r="5" fill="#F28B82" style="animation:m2 1.00s ease-out 0.74s both"/>
+<text x="230.0" y="157.0" font-size="17" text-anchor="end" fill="#F0F6FC" style="">NEJM, 2020</text>
+<path d="M599.4 151H674.1" stroke="#9198A1" stroke-width="1.5" pathLength="1" stroke-dasharray="1" style="animation:draw 1.00s ease-out 0.86s both"/>
+<circle cx="599.4" cy="151" r="5" fill="none" stroke="#9198A1" stroke-width="1.5"/>
+<circle cx="674.1" cy="151" r="5" fill="#F28B82" style="animation:m3 1.00s ease-out 0.86s both"/>
+<text x="230.0" y="186.0" font-size="17" text-anchor="end" fill="#F0F6FC" style="">Hindawi, 2019</text>
+<path d="M893.5 180H628.6" stroke="#9198A1" stroke-width="1.5" pathLength="1" stroke-dasharray="1" style="animation:draw 1.00s ease-out 0.98s both"/>
+<circle cx="893.5" cy="180" r="5" fill="none" stroke="#9198A1" stroke-width="1.5"/>
+<circle cx="628.6" cy="180" r="5" fill="#F28B82" style="animation:m4 1.00s ease-out 0.98s both"/>
+<text x="230.0" y="215.0" font-size="17" text-anchor="end" fill="#F0F6FC" style="">Acad Manage J, 2013</text>
+<path d="M342.6 209H620.5" stroke="#9198A1" stroke-width="1.5" pathLength="1" stroke-dasharray="1" style="animation:draw 1.00s ease-out 1.10s both"/>
+<circle cx="342.6" cy="209" r="5" fill="none" stroke="#9198A1" stroke-width="1.5"/>
+<circle cx="620.5" cy="209" r="5" fill="#F28B82" style="animation:m5 1.00s ease-out 1.10s both"/>
+<text x="230.0" y="244.0" font-size="17" text-anchor="end" fill="#F0F6FC" style="">Plant J, 2015</text>
+<path d="M555.0 238H590.2" stroke="#9198A1" stroke-width="1.5" pathLength="1" stroke-dasharray="1" style="animation:draw 1.00s ease-out 1.22s both"/>
+<circle cx="555.0" cy="238" r="5" fill="none" stroke="#9198A1" stroke-width="1.5"/>
+<circle cx="590.2" cy="238" r="5" fill="#F28B82" style="animation:m6 1.00s ease-out 1.22s both"/>
+<text x="230.0" y="273.0" font-size="17" text-anchor="end" fill="#F0F6FC" style="">JAMA Intern Med, 2020</text>
+<path d="M452.0 267H581.0" stroke="#9198A1" stroke-width="1.5" pathLength="1" stroke-dasharray="1" style="animation:draw 1.00s ease-out 1.34s both"/>
+<circle cx="452.0" cy="267" r="5" fill="none" stroke="#9198A1" stroke-width="1.5"/>
+<circle cx="581.0" cy="267" r="5" fill="#F28B82" style="animation:m7 1.00s ease-out 1.34s both"/>
+<text x="230.0" y="302.0" font-size="17" text-anchor="end" fill="#F0F6FC" style="">Lancet, 2020</text>
+<path d="M592.3 296H558.2" stroke="#9198A1" stroke-width="1.5" pathLength="1" stroke-dasharray="1" style="animation:draw 1.00s ease-out 1.46s both"/>
+<circle cx="592.3" cy="296" r="5" fill="none" stroke="#9198A1" stroke-width="1.5"/>
+<circle cx="558.2" cy="296" r="5" fill="#F28B82" style="animation:m8 1.00s ease-out 1.46s both"/>
+<text x="230.0" y="331.0" font-size="17" text-anchor="end" fill="#F0F6FC" style="">Hindawi, 2020</text>
+<path d="M619.4 325H487.2" stroke="#9198A1" stroke-width="1.5" pathLength="1" stroke-dasharray="1" style="animation:draw 1.00s ease-out 1.58s both"/>
+<circle cx="619.4" cy="325" r="5" fill="none" stroke="#9198A1" stroke-width="1.5"/>
+<circle cx="487.2" cy="325" r="5" fill="#F28B82" style="animation:m9 1.00s ease-out 1.58s both"/>
 </svg>

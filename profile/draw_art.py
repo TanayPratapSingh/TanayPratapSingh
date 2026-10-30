@@ -1,159 +1,236 @@
-"""Draw the profile's animated SVGs, one light and one dark file each.
+"""Draw the profile's figures from real results, one light and one dark SVG each.
 
-Every animation plays once, finishes within LIMIT seconds, and comes to rest on
-a still frame, so nothing keeps moving beside the text (WCAG 2.2.2). The base
-style of every element is its final frame: keyframes give only the starting
-state, and prefers-reduced-motion removes the animation and shows that frame.
+Every mark is data copied from a committed run file, named in SOURCES. When the
+source repos sit next to this one, the script re-reads them and refuses to draw
+if a value has drifted. Each figure animates once, in the order its data was
+measured, ends within LIMIT seconds, and rests on its final frame: base styles
+are the final frame and prefers-reduced-motion shows it at once (WCAG 2.2.2).
 
     python3 profile/draw_art.py
 """
-import math, pathlib, random
+import json, pathlib, re
 
-OUT = pathlib.Path(__file__).parent / "assets"
-LIMIT = 4.5
-PALETTES = {
-    "light": dict(bg="#F2F0EA", edge="#DCD8D0", ink="#15171B", rule="#B9B4A9",
-                  faint="#646A73", met="#1B4D8F", missed="#B3261E"),
-    "dark": dict(bg="#15171B", edge="#2A2E35", ink="#ECE9E1", rule="#4A4F57",
-                 faint="#8B919A", met="#8AB4F8", missed="#F28B82"),
+HERE = pathlib.Path(__file__).parent
+OUT = HERE / "assets"
+REPOS = HERE.parent.parent  # sibling checkouts, used only to verify the data
+LIMIT = 4.0
+FONT = "'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif"
+PALETTES = {  # ink, muted and rule follow GitHub's own text and border colors
+    "light": dict(ink="#1F2328", muted="#59636E", rule="#D1D9E0", held="#1B4D8F", broke="#B3261E"),
+    "dark": dict(ink="#F0F6FC", muted="#9198A1", rule="#3D444D", held="#8AB4F8", broke="#F28B82"),
 }
-KEYFRAMES = """
-@keyframes draw{{from{{stroke-dashoffset:1}}}}
-@keyframes fade{{from{{opacity:0}}}}
-@keyframes fadeout{{from{{opacity:1}}}}
-@keyframes scan{{from{{transform:translateX(0)}}}}
-@keyframes drop{{from{{transform:translateY(-26px);opacity:0}}}}
-@keyframes flow{{from{{transform:translateX(-240px);opacity:0}}}}
-@keyframes travel{{from{{transform:translateX(-774px)}}}}
-@keyframes lit{{from{{stroke:{faint}}}}}
-@keyframes pulse{{0%{{transform:scale(.4);opacity:0}}1%{{opacity:.9}}100%{{transform:scale(2.6);opacity:0}}}}
-.pulse{{transform-box:fill-box;transform-origin:center;opacity:0}}
-@media (prefers-reduced-motion:reduce){{*{{animation:none!important}}}}"""
+
+# loophole: "top 3" queries that lose their order, per 20 training steps (order_losing, limit3_queries)
+LOOPHOLE = {
+    ("leaky", 0, "20261023T000232Z"): [(13, 24), (72, 72), (32, 32), (48, 48), (24, 24)],
+    ("leaky", 1, "20261023T212956Z"): [(40, 54), (55, 56), (8, 8), (24, 24), (31, 32)],
+    ("leaky", 2, "20261023T233103Z"): [(9, 56), (61, 64), (16, 32), (0, 64), (0, 40)],
+    ("honest", 0, "20261023T010137Z"): [(10, 24), (0, 72), (0, 32), (0, 48), (0, 24)],
+    ("honest", 1, "20261023T202818Z"): [(15, 54), (1, 56), (0, 8), (0, 24), (0, 32)],
+    ("honest", 2, "20261023T222727Z"): [(2, 55), (1, 64), (0, 32), (0, 64), (0, 40)],
+}
+# beir-replication: DPR on SciFact, nDCG@10 by document max length
+BEIR_PUBLISHED = 0.318
+BEIR = {"sep_token": {100: 0.2756, 256: 0.2977, 350: 0.3147, 512: 0.3178},
+        "space": {100: 0.2602, 256: 0.2873, 350: 0.3019, 512: 0.3096}}
+# live quakes, Oct 8 2026: b, 95% bootstrap interval
+QUAKES = [("California", 0.727, 0.661, 0.851), ("Alaska", 0.717, 0.609, 0.843),
+          ("Global M4.5+", 1.496, 1.156, 2.041), ("All regions pooled", 0.343, 0.317, 0.403)]
+# afterlife: ten most cited after retraction, headline group (journal read from the DOI)
+AFTERLIFE = [("eLife", "10.7554/elife.12248", 2018, 191, 1031),
+             ("ACS Nano", "10.1021/nn900887m", 2012, 39, 1013),
+             ("J Hum Reprod Sci", "10.4103/0974-1208.82352", 2017, 207, 859),
+             ("NEJM", "10.1056/nejmoa2007621", 2020, 645, 783),
+             ("Hindawi", "10.1155/2014/943162", 2019, 1188, 699),
+             ("Acad Manage J", "10.5465/amj.2009.43670902", 2013, 171, 684),
+             ("Plant J", "10.1046/j.1365-313x.2003.01676.x", 2015, 563, 628),
+             ("JAMA Intern Med", "10.1001/jamainternmed.2018.3713", 2020, 373, 611),
+             ("Lancet", "10.1016/s0140-6736(20)31180-6", 2020, 632, 569),
+             ("Hindawi", "10.1155/2014/150845", 2020, 682, 438)]
 
 
-class Art:
+def verify():
+    """Re-read every value from its source run when the repo is checked out beside this one."""
+    checked = []
+    for (arm, seed, run), rows in LOOPHOLE.items():
+        for f in (REPOS / "loophole" / "runs").glob(run + "-grpo-sqlquest-%s-*/sql_shape.json" % arm):
+            got = [(w["order_losing"], w["limit3_queries"]) for w in json.loads(f.read_text())["windows"]]
+            assert got == rows, (run, got)
+            checked.append("loophole " + run)
+    for variant, by_len in BEIR.items():
+        for n, v in by_len.items():
+            f = REPOS / "beir-replication" / "runs" / ("dpr-ablation-scifact-len%d" % n) / "report.json"
+            if f.exists():
+                d = json.loads(f.read_text())
+                assert round(d["variants"][variant]["ndcg@10"], 4) == v and d["published_ndcg@10"] == BEIR_PUBLISHED, (variant, n)
+                checked.append("beir %s %d" % (variant, n))
+    f = REPOS / "tanaypratapsingh.github.io" / "live" / "runs" / "2026-10-08-quakes-run.txt"
+    if f.exists():
+        text = f.read_text()
+        for name, b, lo, hi in QUAKES:
+            region = "All events" if name == "All regions pooled" else name
+            m = re.search(r"\[%s\][^\[]*?b = ([\d.]+).*?95%% bootstrap \[([\d.]+), ([\d.]+)\]" % re.escape(region), text, re.S)
+            assert m and tuple(map(float, m.groups())) == (b, lo, hi), name
+            checked.append("quakes " + name)
+    f = REPOS / "afterlife" / "runs" / "20261029T201514Z-findings.json"
+    if f.exists():
+        top = json.loads(f.read_text())["report"]["afterlife"]["top_by_citations_after"]
+        got = [(r["paper_key"], r["retraction_year"], r["citations_through_retraction_year"], r["citations_after"]) for r in top]
+        assert got == [("doi:" + doi, y, a, b) for _, doi, y, a, b in AFTERLIFE], got
+        checked.append("afterlife top 10")
+    return checked
+
+
+class Fig:
     def __init__(self, w, h, c):
-        self.w, self.h, self.c, self.parts, self.end = w, h, c, [], 0.0
+        self.w, self.h, self.c, self.parts, self.frames, self.end = w, h, c, [], [], 0.0
 
     def anim(self, name, dur, delay=0.0, ease="ease-out"):
         self.end = max(self.end, dur + delay)
         return "animation:%s %.2fs %s %.2fs both" % (name, dur, ease, delay)
 
-    def add(self, s):
-        self.parts.append(s)
+    def add(self, tpl, **kw):
+        self.parts.append(tpl.format(**dict(self.c, **kw)))
+
+    def text(self, x, y, s, size=17, anchor="start", fill="muted", italic=False, style=""):
+        self.parts.append('<text x="%.1f" y="%.1f" font-size="%d" text-anchor="%s" fill="%s"%s style="%s">%s</text>'
+                          % (x, y, size, anchor, self.c[fill], ' font-style="italic"' if italic else "", style, s))
 
     def svg(self):
         assert self.end <= LIMIT, "animation runs %.2fs, over the %.1fs limit" % (self.end, LIMIT)
-        return ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 %d %d">\n<style>%s\n</style>\n%s\n</svg>\n'
-                % (self.w, self.h, KEYFRAMES.format(**self.c), "\n".join(self.parts)))
+        css = ("text{font-family:%s}"
+               "@keyframes draw{from{stroke-dashoffset:1}}@keyframes fade{from{opacity:0}}"
+               "@keyframes fadeout{from{opacity:1}}%s"
+               "@media (prefers-reduced-motion:reduce){*{animation:none!important}}" % (FONT, "".join(self.frames)))
+        return ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 %d %d">\n<style>%s</style>\n%s\n</svg>\n'
+                % (self.w, self.h, css, "\n".join(self.parts)))
 
 
 def masthead(c):
-    """An instrument trace: the measured line tracks the expected one, then breaks away."""
-    a = Art(960, 200, c)
-    x0, x1, xb, scan = 64, 896, 640, 3.0
-    ideal = lambda x: 148 - (x - x0) * 104 / (x1 - x0)
-    pts = []
-    for i, x in enumerate(range(x0, x1 + 1, 16)):
-        jitter = 0 if x == xb else 2.6 * math.sin(i * 1.7) + 1.6 * math.sin(i * 0.63 + 1)
-        gap = 58 * ((x - xb) / (x1 - xb)) ** 1.6 if x > xb else 0
-        pts.append((x, ideal(x) + jitter + gap))
-    yb = ideal(xb)
-    a.add('<rect x="0.5" y="0.5" width="959" height="199" rx="4" fill="%(bg)s"/>' % c)
-    # under the cover, revealed by the scan
-    a.add('<path d="M%s" fill="none" stroke="%s" stroke-width="2.25" stroke-linejoin="round" stroke-linecap="round"/>'
-          % (" L".join("%d %.1f" % p for p in pts), c["met"]))
-    a.add('<g stroke="%s" stroke-width="1">%s</g>' % (c["faint"], "".join(
-        '<line x1="%d" y1="170" x2="%d" y2="176"/>' % (x, x) for x, _ in pts if x != xb)))
-    a.add('<g stroke="%(missed)s" fill="none"><line x1="%(x)d" y1="%(y)d" x2="%(x)d" y2="178" stroke-dasharray="2 3"/>'
-          '<circle cx="%(x)d" cy="%(yb).1f" r="9" stroke-width="1.25"/><circle cx="%(x)d" cy="%(yb).1f" r="3.5" fill="%(missed)s"/></g>'
-          % dict(c, x=xb, y=yb + 12, yb=yb))
-    # the cover and cursor sweep right; at rest they sit past the plot
-    a.add('<g style="transform:translateX(840px);%s"><rect x="62" y="26" width="900" height="158" fill="%s"/>'
-          '<g style="opacity:0;%s" stroke="%s"><line x1="64" y1="28" x2="64" y2="182"/><circle cx="64" cy="28" r="2.5" fill="%s"/></g></g>'
-          % (a.anim("scan", scan, 0.4, "linear"), c["bg"], a.anim("fadeout", 0.5, 0.4 + scan), c["ink"], c["ink"]))
-    a.add('<g style="%s" fill="none" stroke-width="1"><g stroke="%s" stroke-dasharray="1 5">%s</g>'
-          '<line x1="%d" y1="%.1f" x2="%d" y2="%.1f" stroke="%s" stroke-dasharray="4 6" stroke-width="1.25"/>'
-          '<path stroke="%s" d="M52 34v-10h10M898 24h10v10M908 158v10h-10M62 168h-10v-10"/></g>'
-          % (a.anim("fade", 0.6), c["rule"], "".join('<line x1="%d" y1="%d" x2="%d" y2="%d"/>' % (x0, y, x1, y) for y in (66, 96, 126)),
-             x0, ideal(x0), x1, ideal(x1), c["faint"], c["faint"]))
-    a.add('<circle class="pulse" cx="%d" cy="%.1f" r="9" fill="none" stroke="%s" stroke-width="1.25" style="%s"/>'
-          % (xb, yb, c["missed"], a.anim("pulse", 0.9, 0.4 + scan * (xb - x0) / 840)))
-    a.add('<rect x="0.5" y="0.5" width="959" height="199" rx="4" fill="none" stroke="%(edge)s"/>' % c)
-    return a
+    """Fig. 1: train on a grader with a gap and the policy finds it."""
+    f = Fig(960, 330, c)
+    x0, x1, top, bot, run = 96, 744, 52, 262, 2.8
+    X = lambda step: x0 + (x1 - x0) * step / 100
+    Y = lambda share: bot - (bot - top) * share
+    f.text(x0, 24, "share of “top 3” queries that lose their order, per 20 training steps", italic=True)
+    for v in (0, 0.5, 1):
+        f.add('<line x1="{x0}" x2="{x1}" y1="{y:.1f}" y2="{y:.1f}" stroke="{rule}" stroke-width="1"/>', x0=x0, x1=x1, y=Y(v))
+        f.text(x0 - 12, Y(v) + 6, "%d%%" % (v * 100), anchor="end")
+    for s in range(0, 101, 20):
+        f.text(X(s), bot + 28, str(s), anchor="middle")
+    f.text((x0 + x1) / 2, bot + 58, "training step", italic=True, anchor="middle")
+    # steps 20 to 39: every leaky run takes the query up
+    f.add('<rect x="{a:.1f}" y="{t}" width="{w:.1f}" height="{h}" fill="{broke}" opacity="0.08" style="{s}"/>',
+          a=X(20), t=top, w=X(40) - X(20), h=bot - top, s=f.anim("fade", 0.4, 0.3 + run * 0.2))
+    f.frames.append("@keyframes reveal{from{transform:scaleX(0)}}")
+    f.add('<clipPath id="r"><rect x="{x0}" y="0" width="{w}" height="330" style="transform-origin:{x0}px 0;{s}"/></clipPath>',
+          x0=x0 - 6, w=x1 - x0 + 12, s=f.anim("reveal", run, 0.3, "linear"))
+    lines = []
+    for (arm, seed, _), rows in sorted(LOOPHOLE.items(), key=lambda kv: kv[0][0] == "leaky"):
+        pts = [(X(10 + 20 * i), Y(k / n)) for i, (k, n) in enumerate(rows)]
+        color = c["broke"] if arm == "leaky" else c["held"]
+        lines.append('<path d="M%s" fill="none" stroke="%s" stroke-width="2.25" stroke-linejoin="round" opacity="0.85"/>%s'
+                     % (" L".join("%.1f %.1f" % p for p in pts), color,
+                        "".join('<circle cx="%.1f" cy="%.1f" r="4" fill="%s"/>' % (x, y, color) for x, y in pts)))
+    f.add('<g clip-path="url(#r)">%s</g>' % "".join(lines))
+    f.frames.append("@keyframes scan{from{transform:translateX(0)}}")
+    sweep = f.anim("scan", run, 0.3, "linear") + "," + f.anim("fadeout", 0.3, 0.3 + run)[len("animation:"):]
+    f.add('<line x1="{x}" x2="{x}" y1="{t}" y2="{b}" stroke="{ink}" stroke-width="1" style="opacity:0;transform:translateX({d}px);{s}"/>',
+          x=x0, d=x1 - x0, t=top - 8, b=bot + 6, s=sweep)
+    late = f.anim("fade", 0.4, 0.3 + run)
+    f.text(x1 + 14, Y(0.98) + 6, "leaky grader", fill="broke", style=late)
+    f.text(x1 + 14, Y(0) + 6, "honest grader", fill="held", style=late)
+    f.text(X(70), Y(0.30), "seed 2 lets it go", fill="broke", italic=True, anchor="middle", style=late)
+    return f
 
 
 def replications(c):
-    """Results drop into the cells of a published table; one lands off center."""
-    a = Art(960, 64, c)
-    off = 16
-    for i in range(24):
-        x = 48 + 36 * i
-        miss = i == off
-        a.add('<rect x="%d" y="26" width="18" height="18" fill="none" stroke="%s" style="%s"/>'
-              % (x, c["missed"] if miss else c["faint"], a.anim("lit", 0.3, 0.65 + 0.07 * i) if miss else ""))
-        a.add('<circle cx="%.1f" cy="%.1f" r="4.5" fill="%s" style="%s"/>'
-              % (x + 9 + (6 if miss else 0), 35 - (4 if miss else 0), c["missed"] if miss else c["met"],
-                 a.anim("drop", 0.45, 0.2 + 0.07 * i, "cubic-bezier(.3,1.5,.5,1)")))
-    return a
+    """Fig. 2: the one BEIR miss closes as the encoder's truncation is lifted."""
+    f = Fig(960, 300, c)
+    x0, x1, top, bot, lo, hi = 96, 700, 44, 236, 0.25, 0.33
+    X = lambda n: x0 + (x1 - x0) * (n - 100) / 412
+    Y = lambda v: bot - (bot - top) * (v - lo) / (hi - lo)
+    f.text(x0, 22, "DPR on SciFact, nDCG@10", italic=True)
+    for v in (0.26, 0.28, 0.30):
+        f.add('<line x1="{a}" x2="{b}" y1="{y:.1f}" y2="{y:.1f}" stroke="{rule}"/>', a=x0, b=x1, y=Y(v))
+        f.text(x0 - 12, Y(v) + 6, "%.2f" % v, anchor="end")
+    for n in (100, 256, 350, 512):
+        f.text(X(n), bot + 28, str(n), anchor="middle")
+    f.text(X(100), bot + 50, "default", italic=True, anchor="middle")
+    f.text((x0 + x1) / 2, bot + 50, "document max length, tokens", italic=True, anchor="middle")
+    f.add('<line x1="{a}" x2="{b}" y1="{y:.1f}" y2="{y:.1f}" stroke="{ink}" stroke-width="1.25" stroke-dasharray="5 5"/>',
+          a=x0, b=x1, y=Y(BEIR_PUBLISHED))
+    f.text(x0 + 4, Y(BEIR_PUBLISHED) - 10, "published 0.318", fill="ink")
+    # the miss at the shipped default
+    gap = f.anim("fade", 0.4, 0.2)
+    f.add('<line x1="{x:.1f}" x2="{x:.1f}" y1="{a:.1f}" y2="{b:.1f}" stroke="{broke}" stroke-width="2.5" style="{s}"/>',
+          x=X(100), a=Y(BEIR["sep_token"][100]), b=Y(BEIR_PUBLISHED), s=gap)
+    f.text(X(100) + 12, Y((BEIR["sep_token"][100] + BEIR_PUBLISHED) / 2) - 4, "the miss", fill="broke", italic=True, style=gap)
+    for variant, color, label in (("space", "muted", "title + text"), ("sep_token", "held", "title [SEP] text")):
+        pts = sorted(BEIR[variant].items())
+        f.add('<path d="M%s" fill="none" stroke="{%s}" stroke-width="2.25" pathLength="1" stroke-dasharray="1" style="{s}"/>'
+              % (" L".join("%.1f %.1f" % (X(n), Y(v)) for n, v in pts), color), s=f.anim("draw", 1.8, 0.6, "ease-in-out"))
+        for i, (n, v) in enumerate(pts):
+            f.add('<circle cx="{x:.1f}" cy="{y:.1f}" r="4" fill="{%s}" style="{s}"/>' % color,
+                  x=X(n), y=Y(v), s=f.anim("fade", 0.2, 0.6 + 1.8 * (n - 100) / 412))
+    late = f.anim("fade", 0.3, 2.4)
+    f.text(x1 + 14, Y(BEIR["sep_token"][512]) + 6, "title [SEP] text", fill="held", style=late)
+    f.text(x1 + 14, Y(BEIR["space"][512]) + 14, "title + text", fill="muted", style=late)
+    return f
 
 
 def live(c):
-    """A stream of events flows in and holds, like a frozen frame of a live feed."""
-    a = Art(960, 64, c)
-    rnd = random.Random(11)
-    lanes = (14, 26, 38, 50)
-    a.add('<g stroke="%s" stroke-dasharray="1 6">%s</g>' % (c["rule"], "".join(
-        '<line x1="16" y1="%d" x2="944" y2="%d"/>' % (y, y) for y in lanes)))
-    for _ in range(72):
-        x, y = rnd.uniform(24, 936), rnd.choice(lanes)
-        style = a.anim("flow", rnd.uniform(1.1, 2.0), rnd.uniform(0, 1.4), "cubic-bezier(.2,.7,.3,1)")
-        if rnd.random() < 0.08:
-            a.add('<circle cx="%.1f" cy="%d" r="4.5" fill="none" stroke="%s" style="%s"/>' % (x, y, c["met"], style))
-        else:
-            a.add('<circle cx="%.1f" cy="%d" r="%.1f" fill="%s" style="%s"/>'
-                  % (x, y, rnd.choice((2, 2.5, 3.2)), c["met"] if rnd.random() < 0.6 else c["faint"], style))
-    return a
-
-
-def agents(c):
-    """A token passes four review gates and is stopped at the fifth."""
-    a = Art(960, 64, c)
-    x0, xf, travel = 40, 814, 2.8
-    gates = (200, 360, 520, 680, 840)
-    a.add('<line x1="%d" y1="32" x2="920" y2="32" stroke="%s"/>' % (x0, c["rule"]))
-    a.add('<path d="M%d 32H%d" stroke="%s" stroke-width="2" pathLength="1" stroke-dasharray="1" style="%s"/>'
-          % (x0, xf, c["met"], a.anim("draw", travel, 0.3, "linear")))
-    for i, g in enumerate(gates):
-        last = i == len(gates) - 1
-        t = 0.3 + travel * min(1, (g - 8 - x0) / (xf - x0))
-        a.add('<line x1="%d" y1="18" x2="%d" y2="46" stroke="%s" stroke-width="2.5" stroke-linecap="round" style="%s"/>'
-              % (g, g, c["missed"] if last else c["met"], a.anim("lit", 0.25, t)))
-    a.add('<circle cx="%d" cy="32" r="6" fill="%s" style="%s"/>' % (xf, c["ink"], a.anim("travel", travel, 0.3, "linear")))
-    a.add('<circle class="pulse" cx="%d" cy="32" r="7" fill="none" stroke="%s" stroke-width="1.25" style="%s"/>'
-          % (xf, c["missed"], a.anim("pulse", 0.9, 0.3 + travel)))
-    return a
+    """Fig. 3: regional b-values; pooling everything yields an artifact."""
+    f = Fig(960, 290, c)
+    x0, x1, lo, hi = 300, 900, 0.2, 2.2
+    X = lambda b: x0 + (x1 - x0) * (b - lo) / (hi - lo)
+    rows = [60 + 48 * i for i in range(len(QUAKES))]
+    f.text(x0, 18, "Gutenberg-Richter b, 95% bootstrap interval", italic=True)
+    f.add('<line x1="{x:.1f}" x2="{x:.1f}" y1="30" y2="{b}" stroke="{muted}" stroke-dasharray="5 5"/>', x=X(1), b=rows[-1] + 22)
+    for v in (0.5, 1.0, 1.5, 2.0):
+        f.text(X(v), rows[-1] + 50, "%.1f" % v, anchor="middle")
+    for i, ((name, b, a, z), y) in enumerate(zip(QUAKES, rows)):
+        color = "broke" if name.startswith("All") else "held"
+        t = 0.3 + 0.25 * i
+        f.text(x0 - 24, y + 6, name, anchor="end", fill="ink")
+        for end in (a, z):  # each half of the interval grows out from the estimate
+            f.add('<path d="M{p:.1f} {y}H{e:.1f}" stroke="{%s}" stroke-width="2.5" pathLength="1" stroke-dasharray="1" style="{s}"/>'
+                  % color, p=X(b), e=X(end), y=y, s=f.anim("draw", 0.9, t + 0.2))
+        f.add('<circle cx="{x:.1f}" cy="{y}" r="6" fill="{%s}" style="{s}"/>' % color, x=X(b), y=y, s=f.anim("fade", 0.3, t))
+        f.text(X(b), y - 13, "%.2f" % b, fill=color, anchor="middle", style=f.anim("fade", 0.3, t + 1.0))
+    return f
 
 
 def systems(c):
-    """Four sources merge into one trunk; one stays apart."""
-    a = Art(960, 64, c)
-    draw = 'fill="none" stroke="%s" stroke-width="%s" stroke-linecap="round" pathLength="1" stroke-dasharray="1" style="%s"'
-    for y in (10, 24, 40):
-        a.add('<path d="M40 %d C280 %d 360 32 520 32" %s/>' % (y, y, draw % (c["met"], 1.5, a.anim("draw", 1.6, 0.2, "ease-in-out"))))
-    a.add('<path d="M40 54 C280 54 380 50 600 50" %s/>' % (draw % (c["faint"], 1.5, a.anim("draw", 1.6, 0.2, "ease-in-out"))))
-    a.add('<path d="M520 32H920" %s/>' % (draw % (c["met"], 2.25, a.anim("draw", 1.2, 1.8))))
-    a.add('<circle cx="600" cy="50" r="3.5" fill="%s" style="%s"/>' % (c["missed"], a.anim("fade", 0.3, 1.8)))
-    a.add('<circle class="pulse" cx="600" cy="50" r="7" fill="none" stroke="%s" stroke-width="1.25" style="%s"/>'
-          % (c["missed"], a.anim("pulse", 0.9, 1.8)))
-    return a
+    """Fig. 4: retraction did not stop the citations."""
+    f = Fig(960, 400, c)
+    x0, x1, top, step = 250, 900, 64, 29
+    X = lambda n: x0 + (x1 - x0) * n / 1200
+    f.add('<circle cx="{x}" cy="18" r="5" fill="none" stroke="{muted}" stroke-width="1.5"/>', x=x0 + 6)
+    f.text(x0 + 18, 24, "citations through the retraction year", italic=True)
+    f.add('<circle cx="{x}" cy="18" r="5" fill="{broke}"/>', x=x0 + 336)
+    f.text(x0 + 348, 24, "citations after it", italic=True)
+    bottom = top + step * (len(AFTERLIFE) - 1) + 20
+    for v in range(0, 1201, 300):
+        f.add('<line x1="{x:.1f}" x2="{x:.1f}" y1="{t}" y2="{b}" stroke="{rule}"/>', x=X(v), t=top - 16, b=bottom)
+        f.text(X(v), bottom + 26, "{:,}".format(v), anchor="middle")
+    for i, (journal, _, year, before, after) in enumerate(AFTERLIFE):
+        y, t = top + step * i, 0.3 + 0.12 * i
+        f.text(x0 - 20, y + 6, "%s, %d" % (journal, year), anchor="end", fill="ink")
+        f.add('<path d="M{a:.1f} {y}H{b:.1f}" stroke="{muted}" stroke-width="1.5" pathLength="1" stroke-dasharray="1" style="{s}"/>',
+              a=X(before), b=X(after), y=y, s=f.anim("draw", 1.0, t + 0.2))
+        f.add('<circle cx="{x:.1f}" cy="{y}" r="5" fill="none" stroke="{muted}" stroke-width="1.5"/>', x=X(before), y=y)
+        f.frames.append("@keyframes m%d{from{transform:translateX(%.1fpx)}}" % (i, X(before) - X(after)))
+        f.add('<circle cx="{x:.1f}" cy="{y}" r="5" fill="{broke}" style="{s}"/>', x=X(after), y=y, s=f.anim("m%d" % i, 1.0, t + 0.2))
+    return f
 
 
 if __name__ == "__main__":
+    print("verified against sources:", len(verify()), "values")
     OUT.mkdir(exist_ok=True)
-    for draw in (masthead, replications, live, agents, systems):
+    for draw in (masthead, replications, live, systems):
         for theme, c in PALETTES.items():
-            art = draw(c)
+            fig = draw(c)
             path = OUT / ("%s-%s.svg" % (draw.__name__, theme))
-            path.write_text(art.svg(), encoding="utf-8")
-            print("%-28s %5.2fs %6d bytes" % (path.name, art.end, path.stat().st_size))
+            path.write_text(fig.svg(), encoding="utf-8")
+            print("%-24s %4.2fs %6d bytes" % (path.name, fig.end, path.stat().st_size))

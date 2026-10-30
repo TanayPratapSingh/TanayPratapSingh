@@ -1,88 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 64">
-<style>
-@keyframes draw{from{stroke-dashoffset:1}}
-@keyframes fade{from{opacity:0}}
-@keyframes fadeout{from{opacity:1}}
-@keyframes scan{from{transform:translateX(0)}}
-@keyframes drop{from{transform:translateY(-26px);opacity:0}}
-@keyframes flow{from{transform:translateX(-240px);opacity:0}}
-@keyframes travel{from{transform:translateX(-774px)}}
-@keyframes lit{from{stroke:#8B919A}}
-@keyframes pulse{0%{transform:scale(.4);opacity:0}1%{opacity:.9}100%{transform:scale(2.6);opacity:0}}
-.pulse{transform-box:fill-box;transform-origin:center;opacity:0}
-@media (prefers-reduced-motion:reduce){*{animation:none!important}}
-</style>
-<g stroke="#4A4F57" stroke-dasharray="1 6"><line x1="16" y1="14" x2="944" y2="14"/><line x1="16" y1="26" x2="944" y2="26"/><line x1="16" y1="38" x2="944" y2="38"/><line x1="16" y1="50" x2="944" y2="50"/></g>
-<circle cx="436.6" cy="50" r="3.2" fill="#8AB4F8" style="animation:flow 1.51s cubic-bezier(.2,.7,.3,1) 1.20s both"/>
-<circle cx="583.9" cy="26" r="3.2" fill="#8B919A" style="animation:flow 1.18s cubic-bezier(.2,.7,.3,1) 0.42s both"/>
-<circle cx="567.0" cy="50" r="2.0" fill="#8B919A" style="animation:flow 1.97s cubic-bezier(.2,.7,.3,1) 0.92s both"/>
-<circle cx="782.5" cy="14" r="2.0" fill="#8B919A" style="animation:flow 1.15s cubic-bezier(.2,.7,.3,1) 0.27s both"/>
-<circle cx="321.6" cy="26" r="3.2" fill="#8AB4F8" style="animation:flow 1.57s cubic-bezier(.2,.7,.3,1) 0.90s both"/>
-<circle cx="621.2" cy="50" r="3.2" fill="#8AB4F8" style="animation:flow 2.00s cubic-bezier(.2,.7,.3,1) 1.39s both"/>
-<circle cx="715.3" cy="38" r="2.0" fill="#8B919A" style="animation:flow 1.13s cubic-bezier(.2,.7,.3,1) 0.79s both"/>
-<circle cx="376.5" cy="14" r="2.0" fill="#8AB4F8" style="animation:flow 1.86s cubic-bezier(.2,.7,.3,1) 0.00s both"/>
-<circle cx="918.1" cy="50" r="3.2" fill="#8AB4F8" style="animation:flow 1.48s cubic-bezier(.2,.7,.3,1) 0.79s both"/>
-<circle cx="103.5" cy="38" r="2.0" fill="#8AB4F8" style="animation:flow 1.11s cubic-bezier(.2,.7,.3,1) 0.57s both"/>
-<circle cx="116.2" cy="14" r="2.0" fill="#8AB4F8" style="animation:flow 1.52s cubic-bezier(.2,.7,.3,1) 0.68s both"/>
-<circle cx="197.9" cy="26" r="2.0" fill="#8AB4F8" style="animation:flow 1.48s cubic-bezier(.2,.7,.3,1) 0.54s both"/>
-<circle cx="812.3" cy="38" r="3.2" fill="#8B919A" style="animation:flow 2.00s cubic-bezier(.2,.7,.3,1) 0.03s both"/>
-<circle cx="115.5" cy="26" r="2.5" fill="#8B919A" style="animation:flow 1.29s cubic-bezier(.2,.7,.3,1) 0.36s both"/>
-<circle cx="376.2" cy="14" r="3.2" fill="#8AB4F8" style="animation:flow 1.18s cubic-bezier(.2,.7,.3,1) 0.82s both"/>
-<circle cx="591.4" cy="26" r="2.5" fill="#8AB4F8" style="animation:flow 1.96s cubic-bezier(.2,.7,.3,1) 0.68s both"/>
-<circle cx="164.6" cy="26" r="3.2" fill="#8B919A" style="animation:flow 1.84s cubic-bezier(.2,.7,.3,1) 0.35s both"/>
-<circle cx="529.2" cy="50" r="2.0" fill="#8AB4F8" style="animation:flow 1.89s cubic-bezier(.2,.7,.3,1) 0.84s both"/>
-<circle cx="491.3" cy="38" r="3.2" fill="#8AB4F8" style="animation:flow 1.31s cubic-bezier(.2,.7,.3,1) 0.99s both"/>
-<circle cx="498.3" cy="14" r="3.2" fill="#8B919A" style="animation:flow 1.21s cubic-bezier(.2,.7,.3,1) 0.67s both"/>
-<circle cx="279.6" cy="26" r="2.0" fill="#8AB4F8" style="animation:flow 1.77s cubic-bezier(.2,.7,.3,1) 0.10s both"/>
-<circle cx="184.7" cy="38" r="2.0" fill="#8B919A" style="animation:flow 1.58s cubic-bezier(.2,.7,.3,1) 1.36s both"/>
-<circle cx="918.2" cy="26" r="2.5" fill="#8B919A" style="animation:flow 1.63s cubic-bezier(.2,.7,.3,1) 1.29s both"/>
-<circle cx="902.0" cy="14" r="4.5" fill="none" stroke="#8AB4F8" style="animation:flow 1.64s cubic-bezier(.2,.7,.3,1) 0.10s both"/>
-<circle cx="307.7" cy="26" r="3.2" fill="#8AB4F8" style="animation:flow 2.00s cubic-bezier(.2,.7,.3,1) 0.11s both"/>
-<circle cx="877.9" cy="26" r="3.2" fill="#8AB4F8" style="animation:flow 1.81s cubic-bezier(.2,.7,.3,1) 1.28s both"/>
-<circle cx="94.8" cy="50" r="2.0" fill="#8B919A" style="animation:flow 1.95s cubic-bezier(.2,.7,.3,1) 0.04s both"/>
-<circle cx="372.7" cy="14" r="2.5" fill="#8B919A" style="animation:flow 1.65s cubic-bezier(.2,.7,.3,1) 0.11s both"/>
-<circle cx="688.1" cy="50" r="2.5" fill="#8B919A" style="animation:flow 1.94s cubic-bezier(.2,.7,.3,1) 0.97s both"/>
-<circle cx="100.4" cy="14" r="4.5" fill="none" stroke="#8AB4F8" style="animation:flow 1.38s cubic-bezier(.2,.7,.3,1) 0.12s both"/>
-<circle cx="897.1" cy="14" r="2.5" fill="#8B919A" style="animation:flow 1.55s cubic-bezier(.2,.7,.3,1) 0.86s both"/>
-<circle cx="359.6" cy="26" r="2.5" fill="#8B919A" style="animation:flow 1.71s cubic-bezier(.2,.7,.3,1) 0.28s both"/>
-<circle cx="427.0" cy="26" r="2.5" fill="#8B919A" style="animation:flow 1.39s cubic-bezier(.2,.7,.3,1) 0.93s both"/>
-<circle cx="712.2" cy="26" r="2.5" fill="#8AB4F8" style="animation:flow 1.89s cubic-bezier(.2,.7,.3,1) 0.54s both"/>
-<circle cx="146.7" cy="38" r="2.5" fill="#8B919A" style="animation:flow 1.85s cubic-bezier(.2,.7,.3,1) 1.19s both"/>
-<circle cx="126.9" cy="50" r="3.2" fill="#8AB4F8" style="animation:flow 1.35s cubic-bezier(.2,.7,.3,1) 0.30s both"/>
-<circle cx="637.0" cy="50" r="3.2" fill="#8AB4F8" style="animation:flow 1.39s cubic-bezier(.2,.7,.3,1) 1.16s both"/>
-<circle cx="670.3" cy="38" r="4.5" fill="none" stroke="#8AB4F8" style="animation:flow 1.38s cubic-bezier(.2,.7,.3,1) 1.11s both"/>
-<circle cx="147.9" cy="50" r="2.0" fill="#8B919A" style="animation:flow 1.27s cubic-bezier(.2,.7,.3,1) 1.08s both"/>
-<circle cx="921.4" cy="14" r="2.5" fill="#8B919A" style="animation:flow 1.50s cubic-bezier(.2,.7,.3,1) 0.88s both"/>
-<circle cx="648.3" cy="26" r="2.5" fill="#8AB4F8" style="animation:flow 1.84s cubic-bezier(.2,.7,.3,1) 0.36s both"/>
-<circle cx="57.0" cy="26" r="3.2" fill="#8AB4F8" style="animation:flow 1.35s cubic-bezier(.2,.7,.3,1) 0.48s both"/>
-<circle cx="933.1" cy="26" r="2.0" fill="#8AB4F8" style="animation:flow 1.45s cubic-bezier(.2,.7,.3,1) 1.11s both"/>
-<circle cx="838.1" cy="50" r="2.0" fill="#8AB4F8" style="animation:flow 1.22s cubic-bezier(.2,.7,.3,1) 0.63s both"/>
-<circle cx="542.8" cy="38" r="3.2" fill="#8B919A" style="animation:flow 1.52s cubic-bezier(.2,.7,.3,1) 0.91s both"/>
-<circle cx="752.1" cy="14" r="2.5" fill="#8AB4F8" style="animation:flow 1.29s cubic-bezier(.2,.7,.3,1) 1.26s both"/>
-<circle cx="745.2" cy="38" r="4.5" fill="none" stroke="#8AB4F8" style="animation:flow 1.34s cubic-bezier(.2,.7,.3,1) 1.01s both"/>
-<circle cx="484.3" cy="14" r="2.5" fill="#8B919A" style="animation:flow 1.50s cubic-bezier(.2,.7,.3,1) 0.77s both"/>
-<circle cx="223.1" cy="14" r="3.2" fill="#8B919A" style="animation:flow 1.49s cubic-bezier(.2,.7,.3,1) 0.05s both"/>
-<circle cx="152.1" cy="26" r="3.2" fill="#8B919A" style="animation:flow 2.00s cubic-bezier(.2,.7,.3,1) 1.26s both"/>
-<circle cx="886.5" cy="50" r="2.5" fill="#8AB4F8" style="animation:flow 1.62s cubic-bezier(.2,.7,.3,1) 0.96s both"/>
-<circle cx="288.6" cy="26" r="2.5" fill="#8B919A" style="animation:flow 1.57s cubic-bezier(.2,.7,.3,1) 1.18s both"/>
-<circle cx="894.8" cy="26" r="2.5" fill="#8AB4F8" style="animation:flow 1.37s cubic-bezier(.2,.7,.3,1) 0.20s both"/>
-<circle cx="207.3" cy="14" r="4.5" fill="none" stroke="#8AB4F8" style="animation:flow 1.55s cubic-bezier(.2,.7,.3,1) 0.85s both"/>
-<circle cx="908.1" cy="50" r="2.0" fill="#8B919A" style="animation:flow 1.59s cubic-bezier(.2,.7,.3,1) 1.39s both"/>
-<circle cx="84.1" cy="50" r="2.5" fill="#8AB4F8" style="animation:flow 1.47s cubic-bezier(.2,.7,.3,1) 1.34s both"/>
-<circle cx="473.6" cy="38" r="2.5" fill="#8AB4F8" style="animation:flow 1.49s cubic-bezier(.2,.7,.3,1) 1.14s both"/>
-<circle cx="123.1" cy="50" r="2.0" fill="#8AB4F8" style="animation:flow 1.66s cubic-bezier(.2,.7,.3,1) 1.30s both"/>
-<circle cx="165.8" cy="14" r="3.2" fill="#8AB4F8" style="animation:flow 1.72s cubic-bezier(.2,.7,.3,1) 0.45s both"/>
-<circle cx="479.7" cy="14" r="3.2" fill="#8AB4F8" style="animation:flow 1.87s cubic-bezier(.2,.7,.3,1) 0.87s both"/>
-<circle cx="422.3" cy="50" r="3.2" fill="#8AB4F8" style="animation:flow 1.67s cubic-bezier(.2,.7,.3,1) 1.16s both"/>
-<circle cx="599.8" cy="26" r="2.0" fill="#8AB4F8" style="animation:flow 1.58s cubic-bezier(.2,.7,.3,1) 1.19s both"/>
-<circle cx="699.6" cy="38" r="2.0" fill="#8AB4F8" style="animation:flow 1.91s cubic-bezier(.2,.7,.3,1) 0.44s both"/>
-<circle cx="934.5" cy="14" r="2.5" fill="#8AB4F8" style="animation:flow 1.22s cubic-bezier(.2,.7,.3,1) 0.34s both"/>
-<circle cx="420.5" cy="50" r="3.2" fill="#8B919A" style="animation:flow 1.59s cubic-bezier(.2,.7,.3,1) 0.99s both"/>
-<circle cx="40.2" cy="26" r="2.5" fill="#8AB4F8" style="animation:flow 1.61s cubic-bezier(.2,.7,.3,1) 0.50s both"/>
-<circle cx="485.2" cy="38" r="2.0" fill="#8AB4F8" style="animation:flow 1.55s cubic-bezier(.2,.7,.3,1) 0.96s both"/>
-<circle cx="46.2" cy="50" r="2.0" fill="#8B919A" style="animation:flow 1.23s cubic-bezier(.2,.7,.3,1) 0.26s both"/>
-<circle cx="869.3" cy="14" r="2.0" fill="#8B919A" style="animation:flow 1.62s cubic-bezier(.2,.7,.3,1) 0.19s both"/>
-<circle cx="322.1" cy="50" r="2.5" fill="#8AB4F8" style="animation:flow 1.48s cubic-bezier(.2,.7,.3,1) 0.50s both"/>
-<circle cx="663.3" cy="26" r="2.5" fill="#8B919A" style="animation:flow 1.26s cubic-bezier(.2,.7,.3,1) 0.64s both"/>
-<circle cx="575.6" cy="14" r="3.2" fill="#8B919A" style="animation:flow 1.56s cubic-bezier(.2,.7,.3,1) 0.02s both"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 290">
+<style>text{font-family:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif}@keyframes draw{from{stroke-dashoffset:1}}@keyframes fade{from{opacity:0}}@keyframes fadeout{from{opacity:1}}@media (prefers-reduced-motion:reduce){*{animation:none!important}}</style>
+<text x="300.0" y="18.0" font-size="17" text-anchor="start" fill="#9198A1" font-style="italic" style="">Gutenberg-Richter b, 95% bootstrap interval</text>
+<line x1="540.0" x2="540.0" y1="30" y2="226" stroke="#9198A1" stroke-dasharray="5 5"/>
+<text x="390.0" y="254.0" font-size="17" text-anchor="middle" fill="#9198A1" style="">0.5</text>
+<text x="540.0" y="254.0" font-size="17" text-anchor="middle" fill="#9198A1" style="">1.0</text>
+<text x="690.0" y="254.0" font-size="17" text-anchor="middle" fill="#9198A1" style="">1.5</text>
+<text x="840.0" y="254.0" font-size="17" text-anchor="middle" fill="#9198A1" style="">2.0</text>
+<text x="276.0" y="66.0" font-size="17" text-anchor="end" fill="#F0F6FC" style="">California</text>
+<path d="M458.1 60H438.3" stroke="#8AB4F8" stroke-width="2.5" pathLength="1" stroke-dasharray="1" style="animation:draw 0.90s ease-out 0.50s both"/>
+<path d="M458.1 60H495.3" stroke="#8AB4F8" stroke-width="2.5" pathLength="1" stroke-dasharray="1" style="animation:draw 0.90s ease-out 0.50s both"/>
+<circle cx="458.1" cy="60" r="6" fill="#8AB4F8" style="animation:fade 0.30s ease-out 0.30s both"/>
+<text x="458.1" y="47.0" font-size="17" text-anchor="middle" fill="#8AB4F8" style="animation:fade 0.30s ease-out 1.30s both">0.73</text>
+<text x="276.0" y="114.0" font-size="17" text-anchor="end" fill="#F0F6FC" style="">Alaska</text>
+<path d="M455.1 108H422.7" stroke="#8AB4F8" stroke-width="2.5" pathLength="1" stroke-dasharray="1" style="animation:draw 0.90s ease-out 0.75s both"/>
+<path d="M455.1 108H492.9" stroke="#8AB4F8" stroke-width="2.5" pathLength="1" stroke-dasharray="1" style="animation:draw 0.90s ease-out 0.75s both"/>
+<circle cx="455.1" cy="108" r="6" fill="#8AB4F8" style="animation:fade 0.30s ease-out 0.55s both"/>
+<text x="455.1" y="95.0" font-size="17" text-anchor="middle" fill="#8AB4F8" style="animation:fade 0.30s ease-out 1.55s both">0.72</text>
+<text x="276.0" y="162.0" font-size="17" text-anchor="end" fill="#F0F6FC" style="">Global M4.5+</text>
+<path d="M688.8 156H586.8" stroke="#8AB4F8" stroke-width="2.5" pathLength="1" stroke-dasharray="1" style="animation:draw 0.90s ease-out 1.00s both"/>
+<path d="M688.8 156H852.3" stroke="#8AB4F8" stroke-width="2.5" pathLength="1" stroke-dasharray="1" style="animation:draw 0.90s ease-out 1.00s both"/>
+<circle cx="688.8" cy="156" r="6" fill="#8AB4F8" style="animation:fade 0.30s ease-out 0.80s both"/>
+<text x="688.8" y="143.0" font-size="17" text-anchor="middle" fill="#8AB4F8" style="animation:fade 0.30s ease-out 1.80s both">1.50</text>
+<text x="276.0" y="210.0" font-size="17" text-anchor="end" fill="#F0F6FC" style="">All regions pooled</text>
+<path d="M342.9 204H335.1" stroke="#F28B82" stroke-width="2.5" pathLength="1" stroke-dasharray="1" style="animation:draw 0.90s ease-out 1.25s both"/>
+<path d="M342.9 204H360.9" stroke="#F28B82" stroke-width="2.5" pathLength="1" stroke-dasharray="1" style="animation:draw 0.90s ease-out 1.25s both"/>
+<circle cx="342.9" cy="204" r="6" fill="#F28B82" style="animation:fade 0.30s ease-out 1.05s both"/>
+<text x="342.9" y="191.0" font-size="17" text-anchor="middle" fill="#F28B82" style="animation:fade 0.30s ease-out 2.05s both">0.34</text>
 </svg>
