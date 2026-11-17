@@ -14,13 +14,9 @@ run's `sql_shape.json`, tabled in [loophole's README](https://github.com/TanayPr
 I build agent and retrieval systems and the data pipelines under them, then
 measure where they break.
 
-Syracuse, NY · [Portfolio](https://tanaypratapsingh.github.io) ·
-[LinkedIn](https://www.linkedin.com/in/tanay-pratap-singh-8360681b0/) ·
+New York · [Portfolio](https://tanaypratapsingh.github.io) ·
+[LinkedIn](https://www.linkedin.com/in/tanaypratapsingh/) ·
 [tanayyps@gmail.com](mailto:tanayyps@gmail.com)
-
-**On this page:** [Now](#now) · [Replications](#replications) ·
-[Live dashboards](#live-dashboards) · [Agents and evaluation](#agents-and-evaluation) ·
-[Data and ML systems](#data-and-ml-systems) · [Earlier](#earlier) · [Tools](#tools)
 
 ## Now
 
@@ -32,7 +28,73 @@ Syracuse, NY · [Portfolio](https://tanaypratapsingh.github.io) ·
   backbone: 0.89 validation AUC, with calibration error cut from 0.10 to 0.05.
 - Open to AI, data, ML, and analytics roles.
 
-## Replications
+## Projects
+
+<details>
+<summary><b>Agents and evaluation</b>: loophole, Citation Auditor, Groundwork, Tool Dependency Graph, handoff, comms-agent, media-pulse, Project Mark</summary>
+
+*Agents, the verifiers and review gates around them, and how to tell when they
+fail. Fig. 1 at the top is from loophole.*
+
+<dl>
+<dt><a href="https://github.com/TanayPratapSingh/loophole">loophole</a></dt>
+<dd>RL environments where every task ships an honest verifier and a leaky one with a documented gap. GRPO on Qwen2.5 1.5B trained on the leaky SQL grader wrote the order losing query on 104 and 102 of 104 held out answers in 2 of 3 seeds, and on 0 when trained on the honest one.<br><i>Python, GRPO, TRL, vLLM, LoRA, DPO</i></dd>
+<dt><a href="https://github.com/TanayPratapSingh/citation-auditor">Citation Auditor</a></dt>
+<dd>Checks every reference in a draft: does the paper exist, was it retracted, and does its abstract state what the citing sentence claims. On an untouched test set of 55 references it flagged 10 of 10 invented references and 15 of 15 retracted papers, and wrongly flagged 0 of 30 clean ones. Free, with three small local models.<br><i>Python, Crossref, OpenAlex, sentence-transformers, Streamlit</i></dd>
+<dt><a href="https://github.com/TanayPratapSingh/Groundwork">Groundwork</a></dt>
+<dd>RAG evaluation, guardrails, and an LLM gateway on SQuAD v2.0. recall@5 0.921, ECE 0.045, prompt injection recall 0.884 on an unseen attack corpus, 113 tests.<br><i>Python, BM25, FastAPI, Docker</i></dd>
+<dt><a href="https://github.com/TanayPratapSingh/tool-dependency-graph">Tool Dependency Graph</a></dt>
+<dd>Works out which agent tools have to run before which, from nothing but their JSON Schemas. 1,391 tools, 46 typed entities, 3,278 edges, 8 of 8 hand written assertions passing.<br><i>TypeScript, Bun, JSON Schema</i></dd>
+<dt><a href="https://github.com/TanayPratapSingh/handoff">handoff</a></dt>
+<dd>Supervisor orchestration where every escalation has a deadline and a declared outcome when nobody answers: ladder, safer substitute, drop, or freeze. 215 tests, no dependencies, simulated cluster, no LLM calls.<br><i>Python</i></dd>
+<dt><a href="https://github.com/TanayPratapSingh/comms-agent">comms-agent</a></dt>
+<dd>A stateful agent with a human review gate inside its control flow. On the sample run it flags 9 of 24 mentions, and the reviewer (ground truth standing in for a human) makes 7 label fixes; 7 of the 15 unflagged mentions still reach the report with a wrong label. Synthetic corpus, mock model.<br><i>Python, state graph, tool calling</i></dd>
+<dt><a href="https://github.com/TanayPratapSingh/media-pulse">media-pulse</a></dt>
+<dd>Media monitoring with confidence gated human review. Review lifts held out topic accuracy from 0.896 to 0.979 and sentiment from 0.417 to 0.854 (n=48, VADER); topic ECE 0.193 before review. Synthetic corpus about a fictional brand.<br><i>scikit-learn, VADER, Streamlit</i></dd>
+<dt>Project Mark</dt>
+<dd>Four families of analytics traps with deterministic golden solutions, built to stress test frontier models. The models solved the clean versions.<br><i>Python, pandas, statistics</i></dd>
+</dl>
+
+</details>
+
+<details>
+<summary><b>Data and ML systems</b>: afterlife, Distributed ViT on CIFAR-10, Seattle Food Safety, ZTF Transient Pipeline, JMA Wireless, ShopFloor AI, Kp Index Forecasting</summary>
+
+*Pipelines, warehouses, and training runs.*
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/TanayPratapSingh/TanayPratapSingh/main/profile/assets/systems-dark.svg">
+  <img src="https://raw.githubusercontent.com/TanayPratapSingh/TanayPratapSingh/main/profile/assets/systems-light.svg" width="100%" alt="Dot plot of the ten retracted papers cited most after retraction, citations through the retraction year against after it. eLife 2018: 191 then 1,031. ACS Nano 2012: 39 then 1,013. NEJM 2020: 645 then 783. Lancet 2020: 632 then 569.">
+</picture>
+
+**Fig. 4.** Retraction did not stop the citations. The ten retracted papers cited
+most after retraction, out of 54,737 whose whole post retraction period falls
+inside OpenAlex's citation window: citations through the retraction year (open
+circles) against citations after it (red). Across all 54,737, 60.0% were cited
+after retraction. Journals are read from each DOI. Data: [afterlife
+RESULTS.md](https://github.com/TanayPratapSingh/afterlife/blob/main/RESULTS.md), key `afterlife`.
+
+<dl>
+<dt><a href="https://github.com/TanayPratapSingh/afterlife">afterlife</a></dt>
+<dd>One retraction registry built from four public ones (Retraction Watch, OpenAlex, PubMed, PMC), measuring how badly they disagree. Of 89,706 papers flagged by at least one, all eligible registries agree on 66.1% and exactly one flags 25.1%. Deployed to AWS and Databricks.<br><i>PySpark, Delta Lake, Databricks, dbt, AWS Lambda, Terraform</i></dd>
+<dt><a href="https://github.com/TanayPratapSingh/distributed-vit-cifar10">Distributed ViT on CIFAR-10</a></dt>
+<dd>Data parallel training on 2x T4, with gradient equivalence tested before any speed was measured. Scaling efficiency was 98% in fp32 and 57% in fp16; 24 measured runs traced the drop to the host&#x27;s 4 vCPUs.<br><i>PyTorch, DDP, FSDP</i></dd>
+<dt><a href="https://github.com/TanayPratapSingh/seattle-food-safety">Seattle Food Safety</a></dt>
+<dd>Predicting serious violations in Seattle restaurant inspections. A headline 0.886 test AUC came mostly from a label defect in the previous score column; on sound records the best model reached 0.657 AUC against 0.639 for ranking by the last inspection score.<br><i>Python, scikit-learn, gradient boosting</i></dd>
+<dt><a href="https://github.com/TanayPratapSingh/ztf-transient-pipeline">ZTF Transient Pipeline</a></dt>
+<dd>Replays a real night of ZTF alerts (27,378 Avro packets) through Kafka. 500 were loaded, scored by a multimodal CNN, and rebuilt in a dbt warehouse with 8 models and 21 tests. Coarse labels; a systems project first.<br><i>Kafka, Avro, TensorFlow, dbt, DuckDB, Airflow</i></dd>
+<dt>JMA Wireless</dt>
+<dd>Led a four person Lean Six Sigma team at a maker of cell tower and 5G equipment. Flattened 31 GB of nested PLC JSON to under 5 MB for Power BI. About $355K a year in projected opportunity, pending JMA Finance confirmation.<br><i>pandas, Power BI, DMAIC</i></dd>
+<dt><a href="https://github.com/TanayPratapSingh/shopfloor-ai">ShopFloor AI</a></dt>
+<dd>Predictive maintenance on the AI4I 2020 dataset (0.85 F1, 0.96 AUC), Kafka KPI streaming, and RAG over 6 bundled SOPs, run as a seven service Docker Compose stack.<br><i>scikit-learn, MLflow, Kafka, ChromaDB</i></dd>
+<dt><a href="https://github.com/TanayPratapSingh/multi-horizon-aurora-kp-prediction">Kp Index Forecasting</a></dt>
+<dd>LSTM forecasts of the geomagnetic Kp index from solar wind data. At 1 hour, RMSE 0.738, 45% better than a mean baseline, over 96,000+ hourly observations.<br><i>TensorFlow, LSTM</i></dd>
+</dl>
+
+</details>
+
+<details>
+<summary><b>Replications</b>: Replicating Dr. GRPO, Replicating BEIR</summary>
 
 *Does a published result hold when I rerun it on hardware I can afford?*
 
@@ -54,7 +116,10 @@ text scores 0.318. Data: `runs/dpr-ablation-scifact-len*/report.json` in
 <dd>Six published retrieval results reproduced, four exact to three decimals. The one that missed came from a silent 100 token truncation default in the DPR encoder.<br><i>BM25, sentence-transformers, pytrec_eval</i></dd>
 </dl>
 
-## Live dashboards
+</details>
+
+<details>
+<summary><b>Live dashboards</b>: Wikipedia Edit Stream, Order Book Microstructure, Live Earthquake Statistics, Space Weather Nowcast</summary>
 
 *Public data feeds, processed live in the browser.*
 
@@ -80,66 +145,10 @@ beside it. Data: [live/runs/2026-10-08-quakes-run.txt](https://github.com/TanayP
 <dd>Live NOAA solar wind followed from L1 to Earth: 9 NOAA feeds joined on time, the L1 to Earth delay from the spacecraft ephemeris, Newell coupling, the Shue magnetopause, and the aurora over Syracuse.<br><i>JavaScript, time series joins, d3-geo</i> · <a href="https://github.com/TanayPratapSingh/space-weather-nowcast">source for Space Weather Nowcast</a></dd>
 </dl>
 
-## Agents and evaluation
-
-*Agents, the verifiers and review gates around them, and how to tell when they
-fail. Fig. 1 at the top is from loophole.*
-
-<dl>
-<dt><a href="https://github.com/TanayPratapSingh/loophole">loophole</a></dt>
-<dd>RL environments where every task ships an honest verifier and a leaky one with a documented gap. GRPO on Qwen2.5 1.5B trained on the leaky SQL grader wrote the order losing query on 104 and 102 of 104 held out answers in 2 of 3 seeds, and on 0 when trained on the honest one.<br><i>Python, GRPO, TRL, vLLM, LoRA, DPO</i></dd>
-<dt><a href="https://github.com/TanayPratapSingh/Groundwork">Groundwork</a></dt>
-<dd>RAG evaluation, guardrails, and an LLM gateway on SQuAD v2.0. recall@5 0.921, ECE 0.045, prompt injection recall 0.884 on an unseen attack corpus, 113 tests.<br><i>Python, BM25, FastAPI, Docker</i></dd>
-<dt><a href="https://github.com/TanayPratapSingh/tool-dependency-graph">Tool Dependency Graph</a></dt>
-<dd>Works out which agent tools have to run before which, from nothing but their JSON Schemas. 1,391 tools, 46 typed entities, 3,278 edges, 8 of 8 hand written assertions passing.<br><i>TypeScript, Bun, JSON Schema</i></dd>
-<dt><a href="https://github.com/TanayPratapSingh/handoff">handoff</a></dt>
-<dd>Supervisor orchestration where every escalation has a deadline and a declared outcome when nobody answers: ladder, safer substitute, drop, or freeze. 212 tests, no dependencies, simulated cluster, no LLM calls.<br><i>Python</i></dd>
-<dt><a href="https://github.com/TanayPratapSingh/comms-agent">comms-agent</a></dt>
-<dd>A stateful agent with a human review gate inside its control flow. On the sample run it flags 9 of 24 mentions and the reviewer corrects 7. Synthetic corpus, mock model, simulated reviewer.<br><i>Python, state graph, tool calling</i></dd>
-<dt><a href="https://github.com/TanayPratapSingh/media-pulse">media-pulse</a></dt>
-<dd>Media monitoring with confidence gated human review. Review lifts topic accuracy from 0.88 to 0.96 and sentiment from 0.50 to 0.85; ECE 0.156. Synthetic corpus about a fictional brand.<br><i>scikit-learn, VADER, Streamlit</i></dd>
-<dt>Project Mark</dt>
-<dd>Four families of analytics traps with deterministic golden solutions, built to stress test frontier models. The models solved the clean versions.<br><i>Python, pandas, statistics</i></dd>
-</dl>
-
-## Data and ML systems
-
-*Pipelines, warehouses, and training runs.*
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/TanayPratapSingh/TanayPratapSingh/main/profile/assets/systems-dark.svg">
-  <img src="https://raw.githubusercontent.com/TanayPratapSingh/TanayPratapSingh/main/profile/assets/systems-light.svg" width="100%" alt="Dot plot of the ten retracted papers cited most after retraction, citations through the retraction year against after it. eLife 2018: 191 then 1,031. ACS Nano 2012: 39 then 1,013. NEJM 2020: 645 then 783. Lancet 2020: 632 then 569.">
-</picture>
-
-**Fig. 4.** Retraction did not stop the citations. The ten retracted papers cited
-most after retraction, out of 54,737 whose whole post retraction period falls
-inside OpenAlex's citation window: citations through the retraction year (open
-circles) against citations after it (red). Across all 54,737, 60.0% were cited
-after retraction. Journals are read from each DOI. Data: [afterlife
-RESULTS.md](https://github.com/TanayPratapSingh/afterlife/blob/main/RESULTS.md), key `afterlife`.
-
-<dl>
-<dt><a href="https://github.com/TanayPratapSingh/afterlife">afterlife</a></dt>
-<dd>One retraction registry built from four public ones (Retraction Watch, OpenAlex, PubMed, PMC), measuring how badly they disagree. Of 89,706 papers flagged by at least one, all eligible registries agree on 66.1% and exactly one flags 25.1%. Deployed to AWS and Databricks.<br><i>PySpark, Delta Lake, Databricks, dbt, AWS Lambda, Terraform</i></dd>
-<dt><a href="https://github.com/TanayPratapSingh/distributed-vit-cifar10">Distributed ViT on CIFAR-10</a></dt>
-<dd>Data parallel training on 2x T4, with gradient equivalence tested before any speed was measured. Scaling efficiency was 98% in fp32 and 57% in fp16; 24 measured runs traced the drop to the host&#x27;s 4 vCPUs.<br><i>PyTorch, DDP, FSDP</i></dd>
-<dt><a href="https://github.com/TanayPratapSingh/ztf-transient-pipeline">ZTF Transient Pipeline</a></dt>
-<dd>Replays a real night of ZTF alerts (27,378 Avro packets) through Kafka. 500 were loaded, scored by a multimodal CNN, and rebuilt in a dbt warehouse with 8 models and 21 tests. Coarse labels; a systems project first.<br><i>Kafka, Avro, TensorFlow, dbt, DuckDB, Airflow</i></dd>
-<dt>JMA Wireless</dt>
-<dd>Led a four person Lean Six Sigma team at a maker of cell tower and 5G equipment. Flattened 31 GB of nested PLC JSON to under 5 MB for Power BI. About $355K a year in projected opportunity, pending JMA Finance confirmation.<br><i>pandas, Power BI, DMAIC</i></dd>
-<dt><a href="https://github.com/TanayPratapSingh/shopfloor-ai">ShopFloor AI</a></dt>
-<dd>Predictive maintenance on the AI4I 2020 dataset (0.85 F1, 0.96 AUC), Kafka KPI streaming, and RAG over 6 bundled SOPs, run as a seven service Docker Compose stack.<br><i>scikit-learn, MLflow, Kafka, ChromaDB</i></dd>
-<dt><a href="https://github.com/TanayPratapSingh/multi-horizon-aurora-kp-prediction">Kp Index Forecasting</a></dt>
-<dd>LSTM forecasts of the geomagnetic Kp index from solar wind data. At 1 hour, RMSE 0.738, 45% better than a mean baseline, over 96,000+ hourly observations.<br><i>TensorFlow, LSTM</i></dd>
-</dl>
-
-Full write ups, including what each one gets wrong, are on the
-[portfolio](https://tanaypratapsingh.github.io).
-
-## Earlier
+</details>
 
 <details>
-<summary>Projects from 2024 and 2025</summary>
+<summary><b>Earlier</b>: seven course and side projects from 2024 and 2025</summary>
 
 - **[The Perfect Lap](https://github.com/TanayPratapSingh/the-perfect-lap)**, 2025. Predicts the first pit stop lap in Formula 1. MAE 2.78 laps on 250,000+ records, with a Streamlit app.
 - **[July Energy Demand Under Warming](https://github.com/TanayPratapSingh/energy-usage-prediction)**, 2025. Models July residential demand: +25.4% peak hour load at +5°C, and 9.2% savings from a 1°C setpoint shift. Random Forest R² 0.48. R and Shiny.
@@ -151,7 +160,11 @@ Full write ups, including what each one gets wrong, are on the
 
 </details>
 
-## Tools
+Full write ups, including what each one gets wrong, are on the
+[portfolio](https://tanaypratapsingh.github.io).
+
+<details>
+<summary><b>Tools</b>: languages, LLM and retrieval systems, training, data, and ops</summary>
 
 *Used in the projects above.*
 
@@ -171,3 +184,5 @@ Power BI, Tableau, PySpark, Delta Lake, Databricks
 
 Coursework also covered Spark, Hive, HDFS, ksqlDB, MapReduce, Neo4j, Redis, and
 Cassandra.
+
+</details>

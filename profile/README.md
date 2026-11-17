@@ -10,6 +10,7 @@ profile/
   data/       projects.json: each row's "group" (replications, live, agents,
               systems) renders as a description list at <!--REPLICATIONS-->,
               <!--LIVE-->, and so on; "earlier" rows as the list at <!--EARLIER-->
+              and <!--NAMES:group--> lists a group's names in its collapsed summary
   assets/     the figures, a light and a dark SVG each, placed at
               <!--ART:name--> and chosen by GitHub's theme through <picture>.
               Drawn by draw_art.py from values copied out of each project's

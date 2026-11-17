@@ -69,6 +69,8 @@ def build():
         text = text.replace("<!--%s-->" % group.upper(), work_list(group))
     text = re.sub(r"<!--ART:(\w+)-->", lambda m: art(m.group(1)), text)
     text = text.replace("<!--EARLIER-->", earlier_list())
+    # each collapsed group's summary names its projects, from the same rows
+    text = re.sub(r"<!--NAMES:(\w+)-->", lambda m: ", ".join(r["name"] for r in projects(m.group(1))), text)
     text = text.replace("<!--STACK-->", "\n\n".join(sections("stack")))
     io.open(OUT, "w", encoding="utf-8").write(text.rstrip() + "\n")
     return len(text)
