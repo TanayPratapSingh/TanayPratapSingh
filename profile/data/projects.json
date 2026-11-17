@@ -54,6 +54,13 @@
   },
   {
     "group": "agents",
+    "name": "Citation Auditor",
+    "repo": "https://github.com/TanayPratapSingh/citation-auditor",
+    "result": "Checks every reference in a draft: does the paper exist, was it retracted, and does its abstract state what the citing sentence claims. On an untouched test set of 55 references it flagged 10 of 10 invented references and 15 of 15 retracted papers, and wrongly flagged 0 of 30 clean ones. Free, with three small local models.",
+    "stack": "Python, Crossref, OpenAlex, sentence-transformers, Streamlit"
+  },
+  {
+    "group": "agents",
     "name": "Groundwork",
     "repo": "https://github.com/TanayPratapSingh/Groundwork",
     "result": "RAG evaluation, guardrails, and an LLM gateway on SQuAD v2.0. recall@5 0.921, ECE 0.045, prompt injection recall 0.884 on an unseen attack corpus, 113 tests.",
@@ -70,21 +77,21 @@
     "group": "agents",
     "name": "handoff",
     "repo": "https://github.com/TanayPratapSingh/handoff",
-    "result": "Supervisor orchestration where every escalation has a deadline and a declared outcome when nobody answers: ladder, safer substitute, drop, or freeze. 212 tests, no dependencies, simulated cluster, no LLM calls.",
+    "result": "Supervisor orchestration where every escalation has a deadline and a declared outcome when nobody answers: ladder, safer substitute, drop, or freeze. 215 tests, no dependencies, simulated cluster, no LLM calls.",
     "stack": "Python"
   },
   {
     "group": "agents",
     "name": "comms-agent",
     "repo": "https://github.com/TanayPratapSingh/comms-agent",
-    "result": "A stateful agent with a human review gate inside its control flow. On the sample run it flags 9 of 24 mentions and the reviewer corrects 7. Synthetic corpus, mock model, simulated reviewer.",
+    "result": "A stateful agent with a human review gate inside its control flow. On the sample run it flags 9 of 24 mentions, and the reviewer (ground truth standing in for a human) makes 7 label fixes; 7 of the 15 unflagged mentions still reach the report with a wrong label. Synthetic corpus, mock model.",
     "stack": "Python, state graph, tool calling"
   },
   {
     "group": "agents",
     "name": "media-pulse",
     "repo": "https://github.com/TanayPratapSingh/media-pulse",
-    "result": "Media monitoring with confidence gated human review. Review lifts topic accuracy from 0.88 to 0.96 and sentiment from 0.50 to 0.85; ECE 0.156. Synthetic corpus about a fictional brand.",
+    "result": "Media monitoring with confidence gated human review. Review lifts held out topic accuracy from 0.896 to 0.979 and sentiment from 0.417 to 0.854 (n=48, VADER); topic ECE 0.193 before review. Synthetic corpus about a fictional brand.",
     "stack": "scikit-learn, VADER, Streamlit"
   },
   {
@@ -107,6 +114,13 @@
     "repo": "https://github.com/TanayPratapSingh/distributed-vit-cifar10",
     "result": "Data parallel training on 2x T4, with gradient equivalence tested before any speed was measured. Scaling efficiency was 98% in fp32 and 57% in fp16; 24 measured runs traced the drop to the host's 4 vCPUs.",
     "stack": "PyTorch, DDP, FSDP"
+  },
+  {
+    "group": "systems",
+    "name": "Seattle Food Safety",
+    "repo": "https://github.com/TanayPratapSingh/seattle-food-safety",
+    "result": "Predicting serious violations in Seattle restaurant inspections. A headline 0.886 test AUC came mostly from a label defect in the previous score column; on sound records the best model reached 0.657 AUC against 0.639 for ranking by the last inspection score.",
+    "stack": "Python, scikit-learn, gradient boosting"
   },
   {
     "group": "systems",
